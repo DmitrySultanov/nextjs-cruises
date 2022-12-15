@@ -1,0 +1,40 @@
+.searchFormSection {
+    padding: 1rem 0;
+
+    p, label {
+        color: #000;
+        font-size: 15px;
+        font-weight: 600;
+        margin-left: 0;
+    }
+
+    label {
+        transform: translateY(-100%);
+    }
+
+    fieldset {
+        top: 2px;
+
+        legend {
+            display: none;
+        }
+    } 
+
+    .dateInput {
+        height: 28px;
+        padding: 6px 10px;
+    }
+
+    .fieldError {
+        position: absolute;
+        bottom: -15px;
+        color: red;
+        font-size: 13px;
+    }
+
+    .select {
+        >div {
+            cursor: pointer;
+        }
+    }
+}

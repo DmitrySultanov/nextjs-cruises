@@ -1,0 +1,14 @@
+.publicPlaces {
+    .card {
+        height: 100%;
+
+        &Media {
+            height: 12rem;
+            position: relative;
+    
+            img {
+               object-fit: cover;
+            }
+        }
+    }
+}

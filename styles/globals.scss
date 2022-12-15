@@ -1,0 +1,188 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', Helvetica Neue, sans-serif;
+    height: 100%;
+}
+
+html {
+  font-size: 16px;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 0 0 auto;
+}
+.main-content {
+  /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 1 0 auto;
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+footer {
+  /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 0 0 auto;
+}
+
+ul, ol {
+  margin: 0;
+}
+
+a {
+  color: #0c2d8f;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: #2f63ff;
+  }
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.MuiContainer-root {
+  position: relative;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+  background-color: #fff;
+  width: 12px;
+  height: 12px;
+  opacity: .5;
+  border: 2px solid #000;
+}
+.swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  opacity: 1;
+}
+
+.Slider {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+
+  &Picture {
+    display: block;
+    position: relative;
+    height: 16rem;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .description {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    z-index: 22;
+
+    @media (min-width: 600px) {
+      left: 24px;
+    }
+
+    &Paper {
+        padding: 2rem 2rem;
+        background-color: rgba(255,255,255, .75);
+
+        h2 {
+            margin-top: 0;
+        }
+    }
+  }
+}
+
+.CabinTypes {
+  .Slider {
+    margin: 0;
+
+    &Picture {
+      height: 13rem;
+    }
+  }
+}
+
+.breadcrumbs {
+  margin: 1rem 0 2rem;
+
+  >* {
+    cursor: pointer;
+  }
+}
+
+#react-select-5-listbox {
+  z-index: 99;
+}
+
+#nprogress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1400;
+
+  .bar {
+    height: 5px;
+    background: red;
+  }
+
+  .spinner-icon {
+    width: 25px;
+    height: 25px;
+    border: solid 3px transparent;
+  }
+} 
+
+.accordion {
+  box-shadow: none!important;
+  .MuiAccordionSummary-root {
+    min-height: initial;
+    .MuiAccordionSummary-content {
+      margin: 2px 0; 
+    }
+  }
+}
+
+.read-more-button,
+.created-button {
+  color: #f50057;
+  cursor: pointer;
+}
+
+.displayed-text {
+  font-size: .9rem;
+}
+
+.modal-booking {
+  .MuiIconButton-root {
+    width: 40px;
+  }
+}
+
+.disabled,
+[disabled] {
+  background-color: hsl(0, 0%, 95%);
+  border-color: hsl(0, 0%, 90%);
+}
+
+.field-error {
+  color: red;
+  font-size: 13px;
+}

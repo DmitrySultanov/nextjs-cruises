@@ -1,0 +1,22 @@
+.modalContent {
+    min-height: 10rem;
+    padding-top: 1rem;
+}
+
+.searchCabinForm {
+    .formControl {
+
+        p {
+            margin: 0;
+            line-height: 1.2;
+            min-height: 30px;
+            display: inline-flex;
+            align-items: flex-end;
+        }
+    }
+
+    .searchButton {
+        margin-top: 30px;
+        height: 38px;
+    }
+}

@@ -1,0 +1,150 @@
+.cruises {
+    .card {
+        height: 100%;
+        
+        &Media {
+            height: 12rem;
+            position: relative;
+    
+            img {
+               object-fit: cover;
+            }
+
+            button {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+            }
+        }
+        &BeatifulNameBadge {
+            color: #fff;
+            background-color: #f50057;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            line-height: 1;
+            position: absolute;
+            top: .5rem;
+            right: .5rem;
+            z-index: 22;
+            padding: 2px 4px;
+        }
+        &Title {
+            line-height: 1.25;
+            font-size: 1rem;
+            margin-bottom: .75rem;
+
+            &:hover {
+                color: darkblue;
+            }
+        }
+
+        &Content {
+            padding-bottom: 1rem;
+            height: calc(100% - 12rem);
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: space-between;
+        }
+
+        .minPrice {
+            line-height: 1;
+            margin-top: 0.5rem;
+
+            >* {
+                line-height: 1;
+            }
+        }
+    }
+}
+
+.pagination {
+    margin-top: 2rem;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+
+
+.cruise {
+    .beautifulNameBadge {
+        width: 100%;
+        justify-content: flex-end;
+        padding: 1rem;
+        
+        >span {
+            background-color: #f50057;
+            transform: none;
+            position: static;
+            color: #fff;
+        }
+    }
+
+    .progressBar {
+        display: inline-flex;
+        width: 12rem;
+        align-items: center;
+        margin-left: 0.25rem;
+    }
+
+    .title {
+        margin: 1rem 0;
+    }
+
+    .dates {
+        margin: 1rem 0;
+    }
+
+    .image {
+        position: relative;
+        height: 20rem;
+
+        img {
+            object-fit: cover;
+        }
+    }
+
+    &InfoRow {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-bottom: .25rem;
+    }
+
+    .incommingText {
+        margin-bottom: 1rem;
+        font-size: .9rem;
+        
+        span[style^="color"]:not(:first-child) {
+            margin-left: 1rem;
+        }
+        br {
+            display: none;
+        }
+
+        > span {
+            display: block;
+            margin-top: 1rem;
+        }
+    }
+
+    .card {
+        height: 100%;
+    }
+
+    .CabinTypes {
+        &_title {
+            font-weight: 700;
+            margin-bottom: .75rem;
+            line-height: 1.35;
+        }
+
+        &_description {
+            >* {
+                text-align: left!important;
+            }
+        }
+    }
+}

@@ -1,0 +1,77 @@
+.header {
+    height: 70px;
+    
+    >div {
+        height: 100%;
+    }
+    
+    &Row {
+        height: 100%;
+    }
+
+    .logo {
+        cursor: pointer;
+    }
+
+    .phones {
+        position: relative;
+        padding-left: 2rem;
+
+        >svg {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            font-size: 1.25rem;
+
+            path {
+                fill: #009dff;
+            }
+        }
+
+        a:hover {
+            color: #009dff;
+        }
+    }
+
+    .socLinks {
+        font-size: 2rem;
+
+        >* {
+            margin-left: 1rem;
+        }
+
+        .vk {
+            svg path {
+                fill: #2288f5;
+            }
+        }
+
+        .telegram {
+            svg path {
+                fill: #00b7f9;
+            }
+        }
+
+        .whatsapp {
+            svg path {
+                fill: #27a11a;
+            }
+        }
+    }
+
+    .navbar {
+        padding-bottom: 1rem;
+
+        &Nav {
+            display: flex;
+            justify-content: space-between;
+
+            a {
+                &:hover {
+                    color: #009dff;
+                }
+            }
+        }
+    }
+}

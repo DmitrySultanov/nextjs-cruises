@@ -1,0 +1,68 @@
+.footer {
+    background: #eeeded;
+
+    &Row {
+        padding: 2rem 0;
+    }
+    
+    &Item {
+        &Title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: .5rem;
+        }
+
+        &Row {
+            margin-bottom: .5rem;
+            position: relative;
+            padding-left: 30px;
+
+            >svg {
+                position: absolute;
+                top: .25rem;
+                left: 0;
+
+                path {
+                    fill: #009cff;
+                }
+            }
+
+            p {
+                margin-top: 0;
+                margin-bottom: 0.25rem;
+            }
+        }
+    }
+
+    &Copyright {
+        background-color: #009cff;
+        padding: 1rem 0;
+        color: #fff;
+    }
+
+    .socLinks {
+        font-size: 2rem;
+
+        >* {
+            margin-left: 1rem;
+        }
+
+        .vk {
+            svg path {
+                fill: #2288f5;
+            }
+        }
+
+        .telegram {
+            svg path {
+                fill: #00b7f9;
+            }
+        }
+
+        .whatsapp {
+            svg path {
+                fill: #27a11a;
+            }
+        }
+    }
+}
