@@ -7,7 +7,6 @@ import moment from 'moment';
 import Select from 'react-select';
 import CreatableSelect from 'react-select/creatable';
 import { useRouter } from 'next/router';
-import LoaderModal from '../LoaderModal';
 import { useFetching } from '../../api/useFetching';
 import APIService from '../../api/APIService';
 import styles from '../../styles/CruisesSearch.module.scss';
@@ -57,14 +56,13 @@ const CruisesSearch = () => {
         defaultValues: {
             city: [],
             duration: durationOptions[1],
-            date: moment(new Date()).format('YYYY-MM-DD')
+            date: moment().format('YYYY-MM-DD')
         }
     })
 
     const validateDate = (e) => {
         if(!moment(moment(new Date()).subtract(1,'d').format('YYYY-MM-DD')).isBefore(e.target.value) || 
         e.target.value.length > 10) {
-            console.log(moment(new Date()).format('YYYY-MM-DD'))
             setValue('date', moment(new Date()).format('YYYY-MM-DD'));
         }
     }
@@ -92,13 +90,14 @@ const CruisesSearch = () => {
                             <FormControl fullWidth className="whiteFormControl">
                                 <FormHelperText>Город отправления</FormHelperText>
                                 <Controller
-                                    
+                                    id="city"
                                     name="city"
                                     control={control}
                                     rules={{ required: true }}
                                     render={({ field }) => 
                                     <CreatableSelect
                                         {...field}
+                                        instanceId="city"
                                         className={styles.select}
                                         options={citiesDepartures}
                                         isClearable
@@ -107,7 +106,7 @@ const CruisesSearch = () => {
                                         loadingMessage="Идет загрузка..."
                                     />
                                 } />
-                                {errors.city?.type === 'required' && <span className={styles.fieldError}>Обязательно для заполнения</span>}
+                                {errors.city?.type === 'required' && <span className={styles.fieldError}>Поле обязательное</span>}
                             </FormControl>
                         </Grid>
                         <Grid item lg={2} md={4} sm={6} xs={12}>
@@ -121,37 +120,40 @@ const CruisesSearch = () => {
                                     render={({ field }) => 
                                     <Select
                                         {...field}
+                                        instanceId="duration"
                                         className={styles.select}
                                         options={durationOptions}
                                     />
                                 } />
-                                {errors.duration?.type === 'required' && <span className='field-error'>Select is required</span>}
+                                {errors.duration?.type === 'required' && <span className={styles.fieldError}>Поле обязательное</span>}
                             </FormControl>
                         </Grid>
                         <Grid item lg={2} md={4} sm={6} xs={12}>
-                            <Controller
-                                name="date"
-                                control={control}
-                                rules={{ 
-                                    required: true, 
-                                }}
-                                render={({ field }) => 
-                                <TextField 
-                                {...field} 
-                                fullWidth
-                                label="Дата отправления c"
-                                type="date"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
-                                inputProps={{
-                                    className: styles.dateInput,
-                                    min: moment(new Date()).format("YYYY-MM-DD"),
-                                    onBlur: e => validateDate(e),
-                                }} 
-                                />}
-                            />
-                            {errors.date?.type === 'required' && <span className='field-error'>Field is required</span>}
+                            <FormControl fullWidth className="whiteFormControl">
+                                <Controller
+                                    name="date"
+                                    control={control}
+                                    rules={{ 
+                                        required: true, 
+                                    }}
+                                    render={({ field }) => 
+                                    <TextField 
+                                    {...field} 
+                                    fullWidth
+                                    label="Дата отправления c"
+                                    type="date"
+                                    InputLabelProps={{
+                                        shrink: true,
+                                    }}
+                                    inputProps={{
+                                        className: styles.dateInput,
+                                        min: moment(new Date()).format("YYYY-MM-DD"),
+                                        onBlur: e => validateDate(e),
+                                    }} 
+                                    />}
+                                />
+                                {errors.date?.type === 'required' && <span className={styles.fieldError}>Поле обязательное</span>}
+                            </FormControl>
                         </Grid>
                         <Grid item lg={2} md={4} sm={6} xs={12}>
                             <Button sx={{  mt: 2 }} type={'submit'} fullWidth variant="contained" color="primary" size="large">Поиск</Button>

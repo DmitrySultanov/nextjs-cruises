@@ -17,6 +17,7 @@
         bottom: 0;
         background-position: center;
         background-size: cover;
+        background-attachment: fixed;
         opacity: .2;
     }
 
@@ -25,6 +26,7 @@
         text-align: center;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+        font-family: 'Raleway';
     }
 }
 
@@ -32,17 +34,25 @@
     margin-top: 2rem;
     margin-bottom: 2rem;
 
-    .searchBox {
-        position: relative;
-        height: 16rem;
+    .masonry {
+        margin-top: 0;
+    }
 
-        > a {
+    .card {
+        position: relative;
+
+        >a {
             position: absolute;
             top: 0;
-            right: 0;
             left: 0;
+            right: 0;
             bottom: 0;
             z-index: 22;
+        }
+
+        .title {
+            margin: 0;
+            font-family: 'Raleway';
         }
     }
 }

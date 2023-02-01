@@ -47,7 +47,6 @@ export const getServerSideProps = async ({ params, res }) => {
 }
 
 export default function Cruise({cruise, statusCode, statusText}) {
-  // console.log(cruise)
   moment.locale('ru')
   const [openBookingModal, setOpenBookingModal] = useState(false)
   const handleOpenBookingModal = () => {

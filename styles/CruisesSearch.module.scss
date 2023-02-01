@@ -21,8 +21,14 @@
     } 
 
     .dateInput {
-        height: 28px;
+        height: 26px;
         padding: 6px 10px;
+        background-color: #fff;
+        border-radius: 5px;
+
+        & + fieldset {
+            top: 0;
+        }
     }
 
     .fieldError {
@@ -33,6 +39,9 @@
     }
 
     .select {
+        position: relative;
+        z-index: 99;
+
         >div {
             cursor: pointer;
         }

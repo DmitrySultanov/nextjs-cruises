@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Box, List, ListItem, Typography, Alert } from '@mui/material';
 import { useFetching } from '../api/useFetching';
 import APIService from '../api/APIService';
-import Dotdotdot from 'react-dotdotdot';
 import Link from 'next/link';
 import styles from '../styles/News.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,16 +10,18 @@ import Loader from './Loader';
 
 const News = ({title}) => {
     const [news, setNews] = useState([])
+    const [regions, setRegions] = useState([])
 
     const [fetchNews, isNewsLoading, newsError] = useFetching( async() => {
         const response = await APIService.getAllNews(4)
         const data = await response.data;
         setNews(data)
     })
-    
+
     useEffect(() => {
         fetchNews()
     }, [])
+
 
     const newsMemo = useMemo(() => (
         {news, setNews}

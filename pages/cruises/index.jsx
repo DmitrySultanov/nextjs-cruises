@@ -34,7 +34,6 @@ export const getServerSideProps = async (context) => {
               notFound: true,
             }
         }
-        
     
         return {
             props: {
@@ -56,9 +55,10 @@ export const getServerSideProps = async (context) => {
 
 
 const RiverCruises = ({cruises, statusCode, statusText}) => {
+    console.log(cruises)
     const router = useRouter()
 
-    const handlePaginationChange = (value) => {
+    const handlePaginationChange = (event, value) => {
         router.push({
             pathname: '/cruises',
             query: { 
@@ -72,9 +72,9 @@ const RiverCruises = ({cruises, statusCode, statusText}) => {
     }
 
     return (
-        <Layout>
+        <Layout pageClass="cruises">
             <Head>
-                <title>Главная - Арланд</title>
+                <title>Главная - КруизеШтерн</title>
             </Head>
             <Container maxWidth="lg">
                 <Breadcrumbs />
@@ -83,7 +83,8 @@ const RiverCruises = ({cruises, statusCode, statusText}) => {
                         ?   <>
                             <Grid container spacing={2}>
                                 {cruises.data && cruises.data.map((cruise) => 
-                                    <Grid item sm={6} md={4} lg={3} key={cruise.id} style={cruise.freeCabins ? {'': ''} : {display: 'none'}}>
+                                    // <Grid item sm={6} md={4} lg={3} key={cruise.id} style={cruise.freeCabins ? {'': ''} : {display: 'none'}}>
+                                    <Grid item sm={6} md={4} lg={3} key={cruise.id}>
                                         <Card className={styles.card}>
                                             <Box className={styles.cardMedia}>
                                                 {cruise.beautifulName ? <Box component="span" className={styles.cardBeatifulNameBadge} color="secondary">{cruise.beautifulName}</Box> : ''}

@@ -9,4 +9,6 @@ export const SERVICES_ON_BOARD       = API_ROUTE + 'onboard-services' + API_KEY;
 export const PUBLIC_PLACES           = API_ROUTE + 'public-places' + API_KEY;
 export const PORTS                   = API_ROUTE + 'ports' + API_KEY;
 export const POPULAR_ROUTES          = API_ROUTE + 'popular-routes' + API_KEY;
-export const SHIPS                   = API_ROUTE + 'ships' + API_KEY;
+export const SHIPS_ACTIVE            = API_ROUTE + 'ships-active' + API_KEY;
+export const REGIONS                 = API_ROUTE + 'regions' + API_KEY;
+export const DISCOUNTS               = API_ROUTE + 'discounts' + API_KEY;

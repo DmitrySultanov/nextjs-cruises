@@ -11,11 +11,14 @@
 
     .logo {
         cursor: pointer;
+        font-weight: 600;
+        color: black;
     }
 
     .phones {
         position: relative;
         padding-left: 2rem;
+        margin-right: 1rem;
 
         >svg {
             position: absolute;
@@ -61,16 +64,25 @@
     }
 
     .navbar {
-        padding-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: 'Raleway', Helvetica Neue, sans-serif;
 
-        &Nav {
-            display: flex;
-            justify-content: space-between;
+        li {
+            width: auto;
+            margin: 0 .75rem;
+            padding: 0;
 
-            a {
-                &:hover {
+            &.active {
+                a {
                     color: #009dff;
                 }
+            }
+        }
+
+        a {
+            &:hover {
+                color: #009dff;
             }
         }
     }

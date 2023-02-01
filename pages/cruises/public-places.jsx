@@ -8,24 +8,14 @@ import styles from '../../styles/PublicPlaces.module.scss';
 
 
 export const getStaticProps = async () => {
-    try {
-        const response = await APIService.getPublicPlaces()
-        const data = await response.data
+    const response = await APIService.getPublicPlaces()
+    const data = await response.data
 
-        return {
-            props: {
-                places: data,
-                statusCode: 200,
-                statusText: null
-            }
-        }
-    } catch(error) {
-        return {
-            props: {
-                places: null,
-                statusCode: error.response.status,
-                statusText: error.response.statusText
-            }
+    return {
+        props: {
+            places: data,
+            statusCode: 200,
+            statusText: null
         }
     }
 }

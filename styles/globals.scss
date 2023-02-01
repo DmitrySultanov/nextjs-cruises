@@ -3,6 +3,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', Helvetica Neue, sans-serif;
+  // font-family: 'Raleway', Helvetica Neue, sans-serif;
     height: 100%;
 }
 
@@ -24,7 +25,39 @@ header {
   /* 1 flex-grow, 0 flex-shrink, auto flex-basis */
   flex: 1 0 auto;
   padding-top: 70px;
-  padding-bottom: 50px;
+  padding-bottom: 90px;
+
+  &.cruises {
+    position: relative;
+    background-color: #f8f9ff;
+
+    &:before {
+      content: '';
+      background-image: url('../public/img/60286.jpg');
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: .2;
+    }
+  }
+
+  &.home {
+    position: relative;
+
+    &:before {
+      content: '';
+      background-image: url('../public/img/vecteezy_abstract-geometric-blue-line-pattern-background-design_7167526.jpg');
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: .05;
+      background-attachment: fixed;
+    }
+  }
 }
 footer {
   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
@@ -160,10 +193,22 @@ h4 {
   }
 }
 
+.accordion-group {
+  margin-top: 3rem;
+}
+
+.MuiAccordion-root {
+  background-color: #f7f7f7;
+}
+.MuiCollapse-root {
+  background-color: #f0f0f0;
+}
+
 .read-more-button,
 .created-button {
   color: #f50057;
   cursor: pointer;
+  margin-top: .5rem;
 }
 
 .displayed-text {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CITIES_DEPARTURES_ROUTE, NEWS_ROUTE, API_KEY_S, API_ROUTE, 
-    API_KEY, SERVICES_ON_BOARD, PUBLIC_PLACES, PORTS, POPULAR_ROUTES, SHIPS } from "../utils/api";
+    API_KEY, SERVICES_ON_BOARD, PUBLIC_PLACES, PORTS, POPULAR_ROUTES, SHIPS, REGIONS, DISCOUNTS } from "../utils/api";
 
 export default class APIService {
     static async getCruises(params) {
@@ -71,6 +71,35 @@ export default class APIService {
         return response
     }
 
+    static async getRegions() {
+        const response = await axios.get(REGIONS)
+        return response
+    }
+
+    static async getRegion(id) {
+        const response = await axios.get(API_ROUTE + `regions/${id}` + API_KEY)
+        return response
+    }
+
+    static async getPopularRouteById(params) {
+        try {
+            const response = await axios.get(API_ROUTE + `cruises`, {
+                params: {
+                    'popularRoutes': params.popularRouteId,
+                    'dateStartFrom': params.date,
+                    'onlyFreeCabins': '1',
+                    'key': API_KEY_S,
+                    // 'limit': params.limit ? params.limit : 32,
+                    // 'page': params.page ? params.page : 1,
+                }
+            })
+
+            return response
+        } catch (error) {
+            return error
+        }
+    }
+
     static async getPopularRoutes() {
         const response = await axios.get(POPULAR_ROUTES)
         return response
@@ -86,14 +115,40 @@ export default class APIService {
         return response
     }
 
-    static async getShips() {
-        const response = await axios.get(SHIPS)
-        return response
+    static async getShips(params) {
+        try {
+            let response = null;
+            if(params) {
+                response = await axios.get(API_ROUTE + `ships`, {
+                    params: {
+                        'key': API_KEY_S,
+                        'limit': params.limit ? params.limit : 24,
+                        'page': params.page ? params.page : 1,
+                    }
+                })
+            } else {
+                response = await axios.get(API_ROUTE + `ships`, {
+                    params: {
+                        'key': API_KEY_S,
+                        'limit': 24,
+                        'page': 1,
+                    }
+                })
+            }
+
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
     static async getShip(id) {
-        const response = await axios.get(API_ROUTE + `ships/${id}` + API_KEY)
-        return response
+        try {
+            const response = await axios.get(API_ROUTE + `ships/${id}` + API_KEY)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
     static async getPorts() {
@@ -107,12 +162,16 @@ export default class APIService {
     }
 
     static async getAllNews(limit = 10) {
-        const response = await axios.get(NEWS_ROUTE, {
-            params:{
-                'limit': limit,
-            }
-        })
-        return response
+        try {
+            const response = await axios.get(NEWS_ROUTE, {
+                params:{
+                    'limit': limit,
+                }
+            })
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
     static async getNews(id) {
@@ -131,11 +190,30 @@ export default class APIService {
     }
 
     static async getPublicPlaces(limit = 50) {
-        const response = await axios.get(PUBLIC_PLACES, {
-            params:{
-                'limit': limit,
-            }
-        })
-        return response
+        try {
+            const response = await axios.get(PUBLIC_PLACES, {
+                params:{
+                    'limit': limit,
+                }
+            })
+
+            return response
+        } catch (error) {
+            return error
+        }
+    }
+
+    static async getDiscounts(ship) {
+        try {
+            const response = await axios.get(DISCOUNTS, {
+                params:{
+                    'ship': ship,
+                }
+            })
+
+            return response
+        } catch (error) {
+            return error
+        }
     }
 }

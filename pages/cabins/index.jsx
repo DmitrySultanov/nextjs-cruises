@@ -57,7 +57,7 @@ const CabinsSearchResult = ({cabins, statusCode, statusText}) => {
     return (
         <Layout>
             <Head>
-                <title>Арланд - Подбор кают</title>
+                <title>КруизеШтерн - Подбор кают</title>
             </Head>
             <Container maxWidth="lg">
                 <Breadcrumbs />

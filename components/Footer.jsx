@@ -15,22 +15,22 @@ const Footer = () => {
                 <Container maxWidth="lg">
                     <Grid container spacing={2}>
                         <Grid item xs={3}>
-                            <Link href="/" passHref><a><Image className={styles.logo} src="/img/logo_arland.png" alt="logo" width="128" height="40" /></a></Link>
+                            <Link href="/" passHref><a className={styles.logo}>LOGOTYPE</a></Link>
                         </Grid>
                         <Grid item xs={9}>
                             <Grid container spacing={2}>
                                 <Grid item xs={6}>
                                     <Box className={styles.footerItem}>
                                         <Box className={styles.footerItemTitle}>Санкт-Петербург</Box>
-                                        <Box className={styles.footerItemRow}><FontAwesomeIcon icon={faLocationDot} />ул. Достоевского, 44Е</Box>
+                                        <Box className={styles.footerItemRow}><FontAwesomeIcon icon={faLocationDot} />ул. Большая Монетная, 144</Box>
                                         <Box className={styles.footerItemRow}><FontAwesomeIcon icon={faPhone} />
-                                            <Link href="tel:+78126027503">+7 (812) 602-75-03</Link>
+                                            <Link href="/">+7 (999) 999-99-99</Link>
                                         </Box>
                                         <Box className={styles.footerItemRow}><FontAwesomeIcon icon={faPhone} />
-                                            <Link href="tel:+78007076342">+7 (800) 707 63 42</Link>
+                                            <Link href="/">+7 (888) 888-88-88</Link>
                                         </Box>
                                         <Box className={styles.footerItemRow}><FontAwesomeIcon icon={faEnvelope} />
-                                            <Link href="mailto:tour@arland.pro">tour@arland.pro</Link>
+                                            <Link href="/">cruiseshtern@mail.com</Link>
                                         </Box>
                                         <Box className={styles.footerItemRow}>
                                             <FontAwesomeIcon icon={faCircleInfo} />
@@ -41,13 +41,13 @@ const Footer = () => {
                                 </Grid>
                                 <Grid item xs={6}>
                                     <Box className={styles.socLinks}>
-                                        <Link href="https://vk.com/arlandtravel">
+                                        <Link href="/">
                                             <a className={styles.vk} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faVk} /></a>
                                         </Link>
-                                        <Link href="https://t.me/arland_tours">
+                                        <Link href="/">
                                             <a className={styles.telegram} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faTelegram} /></a>
                                         </Link>
-                                        <Link href="https://wa.me/79633260086">
+                                        <Link href="/">
                                             <a className={styles.whatsapp} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faWhatsapp} /></a>
                                         </Link>
                                     </Box>
@@ -61,7 +61,7 @@ const Footer = () => {
                 <Container maxWidth="lg">
                     <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Box>ООО «Арланд» <FontAwesomeIcon icon={faCopyright} /> 2022</Box>
+                            <Box>ООО «Круизештерн» <FontAwesomeIcon icon={faCopyright} /> 2023</Box>
                         </Grid>
                     </Grid>
                 </Container>
