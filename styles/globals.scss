@@ -58,6 +58,10 @@ header {
       background-attachment: fixed;
     }
   }
+
+  @media (max-width: 768px) {
+    padding-top: 56px;
+  }
 }
 footer {
   /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
@@ -110,6 +114,7 @@ h4 {
 .Slider {
   margin-top: .5rem;
   margin-bottom: .5rem;
+  max-width: 100%;
 
   &Picture {
     display: block;
@@ -138,6 +143,12 @@ h4 {
         h2 {
             margin-top: 0;
         }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &Picture {
+      height: 10rem;
     }
   }
 }
@@ -230,4 +241,10 @@ h4 {
 .field-error {
   color: red;
   font-size: 13px;
+}
+
+.banners {
+  @media (max-width: 768px) {
+    
+  }
 }

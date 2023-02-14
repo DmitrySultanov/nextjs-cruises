@@ -8,6 +8,9 @@ import HomeBanners from '../components/Home/HomeBanners';
 export default function Home() {
   return (
     <Layout pageClass="home">
+      <Head>
+        <title>КруизеШтерн - Главная</title>
+      </Head>
       <HomeIntro />
       <HomeSearchBoxes />
       <HomeBanners />

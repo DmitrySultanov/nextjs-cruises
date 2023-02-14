@@ -7,15 +7,16 @@
     position: relative;
     z-index: 22;
 
-
-    .title {
-    
-    }
     
     .feedbackForm {
-    
         .button {
             height: 56px;
         }
+    }
+
+    @media (max-width: 768px) {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        padding: 3rem 0;
     }
 }

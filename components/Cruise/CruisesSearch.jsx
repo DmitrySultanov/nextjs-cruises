@@ -85,9 +85,9 @@ const CruisesSearch = () => {
         <>
             <Box component="section" className={styles.searchFormSection}>
                 <Box component="form" className={classNames(styles.searchForm, 'form')} onSubmit={handleSubmit(onSubmit)}>
-                    <Grid container alignItems="flex-end" spacing={1} justifyContent="center">
-                        <Grid item lg={2} md={4} sm={6} xs={12}>
-                            <FormControl fullWidth className="whiteFormControl">
+                    <Grid container alignItems={{xs: 'flex-end', md: 'flex-end'}} spacing={1} justifyContent="center">
+                        <Grid item xs={12} sm={6} md={3} lg={2}>
+                            <FormControl fullWidth className={classNames(styles.formControl, 'whiteFormControl')}>
                                 <FormHelperText>Город отправления</FormHelperText>
                                 <Controller
                                     id="city"
@@ -109,8 +109,8 @@ const CruisesSearch = () => {
                                 {errors.city?.type === 'required' && <span className={styles.fieldError}>Поле обязательное</span>}
                             </FormControl>
                         </Grid>
-                        <Grid item lg={2} md={4} sm={6} xs={12}>
-                            <FormControl fullWidth className="whiteFormControl">
+                        <Grid item xs={12} sm={6} md={3} lg={2}>
+                            <FormControl fullWidth className={classNames(styles.formControl, 'whiteFormControl')}>
                                 <FormHelperText>Продолжительность</FormHelperText>
                                 <Controller
                                     id="duration"
@@ -128,8 +128,9 @@ const CruisesSearch = () => {
                                 {errors.duration?.type === 'required' && <span className={styles.fieldError}>Поле обязательное</span>}
                             </FormControl>
                         </Grid>
-                        <Grid item lg={2} md={4} sm={6} xs={12}>
-                            <FormControl fullWidth className="whiteFormControl">
+                        <Grid item xs={12} sm={6} md={3} lg={2}>
+                            <FormControl fullWidth className={classNames(styles.formControl, 'whiteFormControl')}>
+                                <FormHelperText>Дата отправления c</FormHelperText>
                                 <Controller
                                     name="date"
                                     control={control}
@@ -140,7 +141,7 @@ const CruisesSearch = () => {
                                     <TextField 
                                     {...field} 
                                     fullWidth
-                                    label="Дата отправления c"
+                                    // label="Дата отправления c"
                                     type="date"
                                     InputLabelProps={{
                                         shrink: true,
@@ -155,8 +156,8 @@ const CruisesSearch = () => {
                                 {errors.date?.type === 'required' && <span className={styles.fieldError}>Поле обязательное</span>}
                             </FormControl>
                         </Grid>
-                        <Grid item lg={2} md={4} sm={6} xs={12}>
-                            <Button sx={{  mt: 2 }} type={'submit'} fullWidth variant="contained" color="primary" size="large">Поиск</Button>
+                        <Grid item xs={12} lg={2} sm={6} md={3}>
+                            <Button className={styles.searchButton} type={'submit'} fullWidth variant="contained" color="primary" size="large">Поиск</Button>
                         </Grid>
                     </Grid>
                 </Box>

@@ -33,9 +33,18 @@
 
     .fieldError {
         position: absolute;
-        bottom: -15px;
+        top: 65px;
         color: red;
         font-size: 13px;
+    }
+
+    .formControl {
+        margin-bottom: .5rem;
+    }
+
+    .searchButton {
+        height: 38px;
+        margin-bottom: .5rem;
     }
 
     .select {

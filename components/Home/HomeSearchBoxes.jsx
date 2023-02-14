@@ -218,32 +218,30 @@ const HomeSearchBoxes = () => {
             <Box className={styles.searchBoxesSection} component="section">
                 <Container maxWidth="lg">
                     <Grid container spacing={2}>
-                        <Grid item lg={9} md={8} sm={7} xs={12}>
-                            <Grid container spacing={1}>
-                                <Masonry columns={3} spacing={3} className={styles.masonry}>
-                                    {searchBoxesData && searchBoxesData.map((item, index) => 
-                                        <Card key={item.id} className={styles.card}>
-                                            <Link href={{
-                                                pathname: item.href.pathname,
-                                                query: item.href.query
-                                            }}><a></a></Link>    
-                                            <CardMedia
-                                                component="img"
-                                                height={item.imgHeight ? item.imgHeight : '180'}
-                                                image={item.imgSrc}
-                                                alt=""
-                                            />
-                                            <CardContent>
-                                                <Typography gutterBottom variant="h6" component="div" className={styles.title}>
-                                                    {item.title}
-                                                </Typography>
-                                            </CardContent>
-                                        </Card>
-                                    )}
-                                </Masonry>
-                            </Grid>
+                        <Grid item lg={9} md={12} sm={12} xs={12}>
+                            <Masonry columns={{ xs: 1, sm: 2, lg: 3 }} spacing={3} className={styles.masonry}>
+                                {searchBoxesData && searchBoxesData.map((item, index) => 
+                                    <Card key={item.id} className={styles.card}>
+                                        <Link href={{
+                                            pathname: item.href.pathname,
+                                            query: item.href.query
+                                        }}><a></a></Link>    
+                                        <CardMedia
+                                            component="img"
+                                            height={item.imgHeight ? item.imgHeight : '180'}
+                                            image={item.imgSrc}
+                                            alt=""
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h6" component="div" className={styles.title}>
+                                                {item.title}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                )}
+                            </Masonry>
                         </Grid>
-                        <Grid item lg={3} md={4} sm={5} xs={12}>
+                        <Grid item lg={3} md={12} sm={12} xs={12}>
                             <Sidebar />
                         </Grid>
                     </Grid>

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Grid, Box, Container, Badge, Typography, Button, Table, TableBody, TableCell, TableRow, Alert } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
+import Head from 'next/head';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Layout from '../../components/Layout';
@@ -53,8 +54,13 @@ export default function Cruise({cruise, statusCode, statusText}) {
     setOpenBookingModal(true)
   } 
 
+  console.log(cruise)
+
   return (
     <Layout>
+      <Head>
+        <title>КруизеШтерн - {cruise.routeShort ? cruise.routeShort : cruise.name}</title>
+      </Head>
       <Container maxWidth="lg">
         <Breadcrumbs />
         {statusCode === 200
@@ -67,7 +73,7 @@ export default function Cruise({cruise, statusCode, statusText}) {
                 </Typography>
 
                 <Grid container spacing={3}>
-                  <Grid item lg={6} md={6}>
+                  <Grid item xs={12} md={6} lg={6}>
                     <Box className={styles.image}>
                       {cruise.beautifulName
                         ? <Badge overlap="rectangular" badgeContent={cruise.beautifulName} className={styles.beautifulNameBadge} anchorOrigin={{
@@ -79,7 +85,7 @@ export default function Cruise({cruise, statusCode, statusText}) {
                       <Image layout="fill" src={cruise.ship?.photo?.path} alt={cruise.ship?.name} />
                     </Box>
                   </Grid>
-                  <Grid item lg={6} md={6}>
+                  <Grid item xs={12} md={6} lg={6}>
                     <Table aria-label="simple table" size="small">
                       <TableBody>
                         <TableRow sx={{ '& > td': { border: 0 } }}>
@@ -177,7 +183,7 @@ export default function Cruise({cruise, statusCode, statusText}) {
                 </Grid>
 
                 <Grid container spacing={4}>
-                  <Grid item lg={12} sx={{mt: 2}}>
+                  <Grid item xs={12} sx={{mt: 2}}>
                     {cruise.include
                       ? <>
                           <Typography className={styles.incommingText} style={{fontWeight: '700'}} variant="caption">Включено:</Typography>
@@ -187,7 +193,7 @@ export default function Cruise({cruise, statusCode, statusText}) {
                     }
                   </Grid>
 
-                  <Grid item lg={12}>
+                  <Grid item xs={12}>
                     <ShipInfo ship={cruise.ship.id} />
                     
                     <Box sx={{textAlign: 'center', my: 4}}>
@@ -195,7 +201,7 @@ export default function Cruise({cruise, statusCode, statusText}) {
                     </Box>
                   </Grid>
 
-                  <Grid item lg={12}>
+                  <Grid item xs={12}>
                     {cruise.discountsText
                       ? <>
                           <Typography style={{fontWeight: '700', marginBottom: '.5rem'}} variant="subtitle1">Действующие скидки:</Typography>

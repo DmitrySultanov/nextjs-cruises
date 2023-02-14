@@ -51,7 +51,7 @@ const CabinType = ({type}) => {
     
 
     return (
-        <Grid item lg={3}>
+        <Grid item xs={12} md={6} lg={3}>
             <Card className={styles.card}>
                 <Box className={styles.cardMedia}>
                     {type.photos

@@ -15,10 +15,18 @@
         color: black;
     }
 
+    .menuToggler {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        color: blue;
+    }
+
     .phones {
         position: relative;
         padding-left: 2rem;
         margin-right: 1rem;
+        flex-wrap: wrap;
 
         >svg {
             position: absolute;
@@ -83,6 +91,83 @@
         a {
             &:hover {
                 color: #009dff;
+            }
+        }
+    }
+
+    @media (max-width: 992px) {
+        .phones {
+            padding-left: 0;
+
+            >svg {
+                display: none;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        height: 56px;
+    }
+}
+
+.mobileMenu {
+    width: 250px;
+    padding: 1rem 1rem;
+
+    .navbar {
+        padding: 0;
+    }
+
+    .phones {
+        position: relative;
+        padding-left: 1rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+
+        div {
+            margin-bottom: .5rem;
+        }
+
+        >svg {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            font-size: 1.25rem;
+
+            path {
+                fill: #009dff;
+            }
+        }
+
+        a:hover {
+            color: #009dff;
+        }
+    }
+
+    .socLinks {
+        font-size: 2rem;
+        margin-top: 2rem;
+
+        >* {
+            margin-left: 1rem;
+        }
+
+        .vk {
+            svg path {
+                fill: #2288f5;
+            }
+        }
+
+        .telegram {
+            svg path {
+                fill: #00b7f9;
+            }
+        }
+
+        .whatsapp {
+            svg path {
+                fill: #27a11a;
             }
         }
     }

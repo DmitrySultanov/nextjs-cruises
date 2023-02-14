@@ -12,11 +12,11 @@ import classNames from 'classnames';
 SwiperCore.use([Autoplay]);
 
 
-const Slider = ({ photos, slidesPerView, autoplay = false }) => {
+const Slider = ({ photos, slidesPerView, customClass, autoplay = false }) => {
     return (
         <Swiper
             className={classNames('Slider')}
-            slidesPerView={slidesPerView}
+            // slidesPerView={slidesPerView}
             spaceBetween={10}
             modules={[Navigation, Pagination]}
             navigation
@@ -24,10 +24,23 @@ const Slider = ({ photos, slidesPerView, autoplay = false }) => {
             speed={1000}
             loop={true}
             autoplay={autoplay}
+            breakpoints={{
+                // when window width is >= 640px
+                480: {
+                  slidesPerView: 1,
+                },
+                // when window width is >= 768px
+                768: {
+                  slidesPerView: (slidesPerView != 1) ? 2 : 1,
+                },
+                1200: {
+                    slidesPerView: slidesPerView
+                }
+            }}
             >
             {photos.map((photo, idx) => 
                 <SwiperSlide key={idx}>
-                    <Box className={classNames('SliderPicture')}>
+                    <Box className={classNames('SliderPicture', customClass)}>
                         <Image 
                             layout="fill" 
                             placeholder="blur" 

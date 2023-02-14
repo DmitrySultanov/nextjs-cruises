@@ -5,10 +5,12 @@ import Image from 'next/image';
 import Layout from '../../components/Layout';
 import APIService from '../../api/APIService';
 import { Grid, Box, Container, Typography, Button, Alert, 
-    Pagination, Card, CardContent, Skeleton, List, ListItem, ListItemText } from '@mui/material';
+    Pagination, Card, CardContent, Skeleton } from '@mui/material';
 import { useRouter } from 'next/router';
 import Breadcrumbs from '../../components/Breadcrumbs';
-import Dotdotdot from 'react-dotdotdot';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import styles from '../../styles/Ships.module.scss';
 
 
@@ -39,7 +41,6 @@ export const getServerSideProps = async (context) => {
 const Ships = ({ships, statusCode, statusText}) => {
     const [currentPage, setCurrentPage] = useState(1)
     const router = useRouter()
-
     console.log(ships)
 
     const handlePaginationChange = (event, value) => {
@@ -86,13 +87,11 @@ const Ships = ({ships, statusCode, statusText}) => {
                                                             :   <Skeleton variant="rectangular" width="100%" height="100%" />
                                                         }
                                                     </Box>
-                                                    <CardContent>
+                                                    <CardContent className={styles.cardContent}>
                                                         <Link href={`/ship/[id]`} as={`/ships/${ship.id}`}>
                                                             <a>
-                                                                <Typography gutterBottom variant="h6" component="div" className={styles.cardTitle}>
-                                                                    <Dotdotdot clamp={4}>
-                                                                        {ship.name}
-                                                                    </Dotdotdot>
+                                                                <Typography gutterBottom variant="h6" component="span" className={styles.cardTitle}>
+                                                                    {ship.name}
                                                                 </Typography>
                                                             </a>
                                                         </Link>

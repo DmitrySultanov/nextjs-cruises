@@ -59,15 +59,15 @@ const Ship = ({ship, statusCode, statusText}) => {
       <Breadcrumbs />
       <Box className={styles.Ship}>
         <Grid container spacing={3}>
-          <Grid item lg={6} md={6}>
+          <Grid item xs={12} md={6} lg={6}>
             {ship.photos
-              ?   <Slider photos={ship.photos} slidesPerView={1} autoplay="true" />
+              ?   <Slider customClass={styles.slider} photos={ship.photos} slidesPerView={1} autoplay="true" />
               :   <Skeleton variant="rectangular" width="100%" height="100%" />
             }
           </Grid>
-          <Grid item lg={6} md={6}>
+          <Grid item xs={12} md={6} lg={6}>
             <Typography component="h1" className={styles.title}>{ship.name} <Typography component="span">{ship.typeName ? ship.typeName : ''}</Typography></Typography>
-            {ship.files.captainPhoto
+            {ship.files.captainPhoto.path
               ? <Box className={styles.captain}>
                   <Avatar alt={ship.captain} src={ship.files.captainPhoto.path} sx={{ width: 56, height: 56 }} />
                   <Box sx={{ml: 1}}>
@@ -75,6 +75,29 @@ const Ship = ({ship, statusCode, statusText}) => {
                     <Typography component="p" sx={{mt: 1}}>{ship.captain}</Typography>
                   </Box>
                 </Box>
+              : null
+            }
+          </Grid>
+          <Grid item xs={12}>
+            {ship.descriptionBig
+              ? <Typography variant="body1" component="div" dangerouslySetInnerHTML={{ __html: ship.descriptionBig }} />
+              : null
+            }
+            {ship.files?.scheme?.path
+              ? <Box sx={{ mt: 5}}><Image 
+                  width={1920} 
+                  height={900} 
+                  src={ship.files.scheme.path} 
+                  alt={ship.files.scheme.name} 
+                  placeholder="blur" 
+                  blurDataURL="../../img/blur-large.jpg"
+              /></Box>
+              : null
+            }
+          </Grid>
+          <Grid item xs={12}>
+            {ship.discounts
+              ? <Typography variant="body1" component="div" dangerouslySetInnerHTML={{ __html: ship.discounts }} />
               : null
             }
           </Grid>

@@ -9,7 +9,7 @@ import Breadcrumbs from '../components/Breadcrumbs';
 const About = () => {
     return (
         <Layout>
-             <Head>
+            <Head>
                 <title>КруизеШтерн - О нас</title>
             </Head>
             <Container maxWidth="lg">

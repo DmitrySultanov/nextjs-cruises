@@ -14,12 +14,12 @@ const Footer = () => {
             <Box className={styles.footerRow}>
                 <Container maxWidth="lg">
                     <Grid container spacing={2}>
-                        <Grid item xs={3}>
+                        <Grid item xs={12} md={3}>
                             <Link href="/" passHref><a className={styles.logo}>LOGOTYPE</a></Link>
                         </Grid>
-                        <Grid item xs={9}>
+                        <Grid item xs={12} md={9}>
                             <Grid container spacing={2}>
-                                <Grid item xs={6}>
+                                <Grid item xs={12} md={6}>
                                     <Box className={styles.footerItem}>
                                         <Box className={styles.footerItemTitle}>Санкт-Петербург</Box>
                                         <Box className={styles.footerItemRow}><FontAwesomeIcon icon={faLocationDot} />ул. Большая Монетная, 144</Box>
@@ -39,7 +39,7 @@ const Footer = () => {
                                         </Box>
                                     </Box>
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={12} md={6}>
                                     <Box className={styles.socLinks}>
                                         <Link href="/">
                                             <a className={styles.vk} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faVk} /></a>
