@@ -67,31 +67,33 @@ const CabinsSearchResult = ({cabins, statusCode, statusText}) => {
 
                             <Grid container spacing={1}>
                                 <Grid item lg={8} md={7} sm={6} xs={12}>
-                                    <RadioGroup
-                                        aria-labelledby="demo-radio-buttons-group-label"
-                                        defaultValue=""
-                                        name="radio-buttons-group"
-                                    >
-                                        {Object.entries(cabins[0]).map((item) =>
-                                                <Controller
-                                                    id="accessible_cabin"
-                                                    name="accessible_cabin"
-                                                    control={control}
-                                                    key={item[1].cabin_id} 
-                                                    render={({ field }) => 
-                                                    
-                                                    <FormControlLabel 
-                                                        {...field} 
-                                                        value={item[1].cabin_id} 
-                                                        control={<Radio />} 
-                                                        label={
-                                                            `${item[1].cabin_name} - ${item[1].category.name} - ${item[1].deck.name}
-                                                            - ${item[1].places.length} мест(а), Итого: ${item[1].total} руб.`
-                                                        } />
-                                                    } 
-                                                />
-                                        )}
-                                    </RadioGroup>
+                                    <Box className={styles.variantsBox}>
+                                        <RadioGroup
+                                            aria-labelledby="demo-radio-buttons-group-label"
+                                            defaultValue=""
+                                            name="radio-buttons-group"
+                                        >
+                                            {Object.entries(cabins[0]).map((item) =>
+                                                    <Controller
+                                                        id="accessible_cabin"
+                                                        name="accessible_cabin"
+                                                        control={control}
+                                                        key={item[1].cabin_id} 
+                                                        render={({ field }) => 
+                                                        
+                                                        <FormControlLabel 
+                                                            {...field} 
+                                                            value={item[1].cabin_id} 
+                                                            control={<Radio />} 
+                                                            label={
+                                                                `${item[1].cabin_name} - ${item[1].category.name} - ${item[1].deck.name}
+                                                                - ${item[1].places.length} мест(а), Итого: ${item[1].total} руб.`
+                                                            } />
+                                                        } 
+                                                    />
+                                            )}
+                                        </RadioGroup>
+                                    </Box>
                                 </Grid>
                                 <Grid item lg={4} md={5} sm={6} xs={12}>
                                     <Button sx={{  mt: 2 }} style={{ 'position': 'sticky', 'top': '5rem', 'width': 'auto'}} type={'submit'} fullWidth variant="contained" color="primary" size="large">Отправить заявку</Button>

@@ -37,7 +37,7 @@ const ShipInfo = (shipId) => {
                         <Typography variant="subtitle1"><Typography variant="caption" sx={{fontWeight: 'bold', fontSize: '1rem'}}>{shipMemo.ship.name}</Typography> {shipMemo.ship.typeName ? shipMemo.ship.typeName : ''}</Typography>
 
                         {shipMemo.ship.photos
-                            ?   <Slider photos={shipMemo.ship.photos} slidesPerView={3} />
+                            ?   <Slider photos={shipMemo.ship.photos} slidesPerView={3} customClass={styles.slider} />
                             :   null
                         }
                         {shipMemo.ship.descriptionBig

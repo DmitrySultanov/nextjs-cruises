@@ -86,10 +86,10 @@ export default function Cruise({cruise, statusCode, statusText}) {
                     </Box>
                   </Grid>
                   <Grid item xs={12} md={6} lg={6}>
-                    <Table aria-label="simple table" size="small">
+                    <Table aria-label="simple table" size="small" className={styles.table}>
                       <TableBody>
                         <TableRow sx={{ '& > td': { border: 0 } }}>
-                          <TableCell sx={{width: '33%', pl: 0}}>
+                          <TableCell sx={{pl: 0}}>
                             <Typography variant="body1" component="span">Занятых кают - </Typography>
                           </TableCell>
                           <TableCell>

@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import { Box, Radio, RadioGroup, List, FormControlLabel, ListItem, Typography, Alert } from '@mui/material';
+import { Radio, RadioGroup, FormControlLabel } from '@mui/material';
 import APIService from '../../api/APIService';
 import { useFetching } from '../../api/useFetching';
 import Loader from '../Loader';
+import styles from '../../styles/Modal.module.scss';
 
 
 const SelectionCabin = ({id}) => {

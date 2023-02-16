@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Box, Container, Typography, Button, Alert, 
-    Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { Button, Alert, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
 const Modal = ({openModal, setOpenModal, data}) => {
     console.log(data)

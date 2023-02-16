@@ -69,7 +69,7 @@ const Ships = ({ships, statusCode, statusText}) => {
                             ?   <Box className={styles.Ships}>
                                     <Grid container spacing={2}>
                                         {ships.data != null && ships.data.map((ship, idx) =>
-                                            <Grid item sm={4} md={4} lg={3} key={idx}>
+                                            <Grid item xs={12} sm={6} md={4} lg={3} key={idx}>
                                                 <Card className={styles.card}>
                                                     <Box className={styles.cardMedia}>
                                                         {ship.files?.photo?.path

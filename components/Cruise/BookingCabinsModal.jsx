@@ -38,7 +38,7 @@ const BookingCabinsModal = ({openBookingModal, setOpenBookingModal, cruiseId}) =
 
     return (
         <Dialog open={openBookingModal} onClose={handleClose} maxWidth="md" fullWidth={true} className="modal modal-booking">
-            <CustomDialogTitle id="customized-dialog-title" onClose={handleClose}>
+            <CustomDialogTitle id="customized-dialog-title" onClose={handleClose} className={styles.modalTitle}>
             Подбор кают для пассажиров и расчет стоимости
             </CustomDialogTitle>
             <DialogContent>

@@ -123,7 +123,7 @@ const SearchCabinForm = () => {
         <Box>
             <Box component="form" className={classNames(styles.searchCabinForm, 'form')} onSubmit={handleSubmit(onSubmit)}>
                 <Grid container spacing={1} justifyContent="center">
-                    <Grid item lg={3} md={4} sm={6} xs={12}>
+                    <Grid item lg={3} md={4} sm={4} xs={12}>
                         <FormControl fullWidth className={styles.formControl}>
                             <FormHelperText>Кол-во взрослых мест в каюте</FormHelperText>
                             <Controller
@@ -141,7 +141,7 @@ const SearchCabinForm = () => {
                             {errors.adult_count?.type === 'required' && <span className='field-error'>Select is required</span>}
                         </FormControl>
                     </Grid>
-                    <Grid item lg={3} md={4} sm={6} xs={12}>
+                    <Grid item lg={3} md={4} sm={4} xs={12}>
                         <FormControl fullWidth className={styles.formControl}>
                             <FormHelperText>Кол-во детских мест</FormHelperText>
                             <Controller
@@ -204,7 +204,7 @@ const SearchCabinForm = () => {
                             <FormHelperText>Введите полный возраст ребенка через запятую</FormHelperText>
                         </FormControl>
                     </Grid>
-                    <Grid item lg={3} md={4} sm={6} xs={12}>
+                    <Grid item lg={3} md={4} sm={4} xs={12}>
                         <FormControl fullWidth className={styles.formControl}>
                             <FormHelperText>Кол-во детей, размещаемых без места</FormHelperText>
                             <Controller
@@ -267,7 +267,7 @@ const SearchCabinForm = () => {
                             <FormHelperText>Введите полный возраст ребенка через запятую</FormHelperText>
                         </FormControl>
                     </Grid>
-                    <Grid item lg={3} md={4} sm={6} xs={12}>
+                    <Grid item lg={3} md={4} sm={4} xs={12}>
                         <Button className={styles.searchButton} type={'submit'} fullWidth variant="contained" color="primary" size="large">Поиск</Button>
                     </Grid>
                 </Grid>
