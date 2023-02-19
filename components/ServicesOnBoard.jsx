@@ -16,7 +16,7 @@ const ServicesOnBoard = () => {
     
     useEffect(() => {
         fetchServices()
-    }, [])
+    }, [fetchServices])
 
     const servicesMemo = useMemo(() => (
         {services, setServices}

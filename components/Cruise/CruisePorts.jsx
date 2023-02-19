@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { Typography, Table, TableBody, TableCell, TableRow, Alert } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Typography, Table, TableBody, TableCell, TableRow } from '@mui/material';
 import APIService from '../../api/APIService';
 import { useFetching } from '../../api/useFetching';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -28,7 +28,7 @@ const CruisePorts = ({cruise}) => {
     useEffect(() => {
         fetchPortStart()
         fetchPortEnd()
-    }, [])
+    }, [fetchPortStart, fetchPortEnd])
 
     return (
         <Table aria-label="simple table" size="small">

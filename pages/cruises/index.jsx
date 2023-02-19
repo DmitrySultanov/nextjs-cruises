@@ -53,7 +53,6 @@ export const getServerSideProps = async (context) => {
     }
 }
 
-
 const RiverCruises = ({cruises, statusCode, statusText}) => {
     console.log(cruises)
     const router = useRouter()

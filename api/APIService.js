@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CITIES_DEPARTURES_ROUTE, NEWS_ROUTE, API_KEY_S, API_ROUTE, 
-    API_KEY, SERVICES_ON_BOARD, PUBLIC_PLACES, PORTS, POPULAR_ROUTES, SHIPS, REGIONS, DISCOUNTS } from "../utils/api";
+    API_KEY, SERVICES_ON_BOARD, PUBLIC_PLACES, PORTS, POPULAR_ROUTES, REGIONS, DISCOUNTS } from "../utils/api";
 
 export default class APIService {
     static async getCruises(params) {
@@ -119,7 +119,7 @@ export default class APIService {
         try {
             let response = null;
             if(params) {
-                response = await axios.get(API_ROUTE + `ships`, {
+                response = await axios.get(API_ROUTE + `ships-active`, {
                     params: {
                         'key': API_KEY_S,
                         'limit': params.limit ? params.limit : 24,
@@ -127,7 +127,7 @@ export default class APIService {
                     }
                 })
             } else {
-                response = await axios.get(API_ROUTE + `ships`, {
+                response = await axios.get(API_ROUTE + `ships-active`, {
                     params: {
                         'key': API_KEY_S,
                         'limit': 24,
@@ -144,7 +144,7 @@ export default class APIService {
 
     static async getShip(id) {
         try {
-            const response = await axios.get(API_ROUTE + `ships/${id}` + API_KEY)
+            const response = await axios.get(API_ROUTE + `ships-active/${id}` + API_KEY)
             return response
         } catch (error) {
             return error

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { Grid, Box, Container, AppBar, Slide, useScrollTrigger, List, ListItem, SwipeableDrawer, Button, IconButton  } from '@mui/material';
+import { Grid, Box, Container, AppBar, Slide, useScrollTrigger, List, ListItem, SwipeableDrawer, IconButton  } from '@mui/material';
 import styles from '../styles/Header.module.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; // Import the FontAwesomeIcon component
 import { faPhone, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +12,7 @@ const Header = (props) => {
     const router = useRouter()
     const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
-    const [stateDrawer, setStateDrawer] = useState(false);
+    const [stateDrawer, setStateDrawer] = useState(false)
 
     const toggleDrawer = (state) => (event) => {
         if (
@@ -25,7 +24,7 @@ const Header = (props) => {
         }
     
         setStateDrawer(state);
-    };
+    }
 
     function HideOnScroll(props) {
         const { children, window } = props;
@@ -66,9 +65,9 @@ const Header = (props) => {
                                             <ListItem className={router.pathname == "/information" ? styles.active : ""}>
                                                 <Link  href="/information"><a>Информация</a></Link>
                                             </ListItem>
-                                            <ListItem className={router.pathname == "/ships" ? styles.active : ""}>
+                                            {/* <ListItem className={router.pathname == "/ships" ? styles.active : ""}>
                                                 <Link  href="/ships"><a>Теплоходы</a></Link>
-                                            </ListItem>
+                                            </ListItem> */}
                                         </List>
                                     </Grid>
                                     <Grid item xs={12} md={4} lg={5}>
@@ -107,14 +106,6 @@ const Header = (props) => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        {/* <Grid container spacing={2} className={styles.navbar}>
-                            <Grid item xs={12}>
-                                <Box component="nav" className={styles.navbarNav}>
-                                    <Link href="/"><a>Главная</a></Link>
-                                    <Link href="/cruises"><a>Речные круизы</a></Link>
-                                </Box>
-                            </Grid>
-                        </Grid> */}
                     </Container>
                 </AppBar>
             </HideOnScroll>
@@ -139,9 +130,9 @@ const Header = (props) => {
                         <ListItem className={router.pathname == "/information" ? styles.active : ""}>
                             <Link  href="/information"><a>Информация</a></Link>
                         </ListItem>
-                        <ListItem className={router.pathname == "/ships" ? styles.active : ""}>
+                        {/* <ListItem className={router.pathname == "/ships" ? styles.active : ""}>
                             <Link  href="/ships"><a>Теплоходы</a></Link>
-                        </ListItem>
+                        </ListItem> */}
                     </List>
                     <Box className={styles.phones} sx={{ display: { xs: 'none', sm: 'flex' }}}>
                         <Box>

@@ -1,8 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
-import { Grid, Box, Container, Typography, Button, Alert, 
-    Pagination, Card, CardContent, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { Grid, Box, Container, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";

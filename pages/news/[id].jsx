@@ -6,6 +6,7 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import styles from '../../styles/News.module.scss';
 import Image from 'next/image';
 
+
 export async function getStaticPaths() {
   const response = await APIService.getAllNews()
   const allNews = await response.data;
@@ -17,8 +18,8 @@ export async function getStaticPaths() {
   }))
 
   return { 
-      paths, 
-      fallback: false 
+    paths, 
+    fallback: false 
   }
 }
 
@@ -34,21 +35,21 @@ export async function getStaticProps({ params }) {
 }
 
 const News = (news) => {
-    return (
-      <Layout>
-        <Container maxWidth="lg">
-          <Breadcrumbs />
-          <Box className={styles.newsSingle}>
-            <Badge overlap="rectangular" color="primary" badgeContent={news.news?.dateNews} className={styles.date}></Badge>
-            <Typography variant="h4" component="h1">{news.news?.name}</Typography>
-            <Box className={styles.picture}>
-              <Image layout="fill" src={news.news?.image} alt="" />
-            </Box>
-            <Typography variant="body1" component="p" dangerouslySetInnerHTML={{ __html: news.news?.text }} />
+  return (
+    <Layout>
+      <Container maxWidth="lg">
+        <Breadcrumbs />
+        <Box className={styles.newsSingle}>
+          <Badge overlap="rectangular" color="primary" badgeContent={news.news?.dateNews} className={styles.date}></Badge>
+          <Typography variant="h4" component="h1">{news.news?.name}</Typography>
+          <Box className={styles.picture}>
+            <Image layout="fill" src={news.news?.image} alt="" />
           </Box>
-        </Container>
-      </Layout>
-    );
+          <Typography variant="body1" component="p" dangerouslySetInnerHTML={{ __html: news.news?.text }} />
+        </Box>
+      </Container>
+    </Layout>
+  )
 }
 
 export default News;

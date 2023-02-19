@@ -9,8 +9,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import classNames from 'classnames';
 
-SwiperCore.use([Autoplay]);
 
+SwiperCore.use([Autoplay]);
 
 const Slider = ({ photos, slidesPerView, customClass, autoplay = false }) => {
     return (

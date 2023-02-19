@@ -1,12 +1,13 @@
 import React from 'react';
 import { Button, Alert, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
+
 const Modal = ({openModal, setOpenModal, data}) => {
     console.log(data)
 
     const handleModalClose = () => {
         setOpenModal(false);
-    };
+    }
 
     return (
         <Dialog

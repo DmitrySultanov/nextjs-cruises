@@ -1,14 +1,13 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { Grid, Box, Container } from '@mui/material';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot, faPhone, faEnvelope, faCircleInfo, faCopyright } from "@fortawesome/free-solid-svg-icons";
 import { faVk, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import styles from '../styles/Footer.module.scss';
 
+
 const Footer = () => {
-    
     return (
         <Box component="footer" className={styles.footer}>
             <Box className={styles.footerRow}>

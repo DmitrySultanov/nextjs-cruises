@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { Button, Box, Alert, Typography } from '@mui/material/';
+import { Box, Alert, Typography } from '@mui/material/';
 import { useFetching } from '../../api/useFetching';
 import APIService from '../../api/APIService';
 import Slider from '../Slider';
 import Image from 'next/image';
 import CabinTypes from '../Cruise/CabinTypes';
-import BookingCabinsModal from '../Cruise/BookingCabinsModal';
 import Loader from '../Loader';
 import styles from '../../styles/Cruises.module.scss';
 
@@ -21,7 +20,7 @@ const ShipInfo = (shipId) => {
 
     useEffect(() => {
         fetchShip()
-    }, [])
+    }, [fetchShip])
 
     const shipMemo = useMemo(() => (
         {ship}

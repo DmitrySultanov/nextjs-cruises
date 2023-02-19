@@ -2,9 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import APIService from '../api/APIService';
-import { Grid, Box, Container, Typography, Button, Alert, 
-    Pagination, Card, CardContent, Skeleton, List, ListItem, ListItemText } from '@mui/material';
-import { useRouter } from 'next/router';
+import { Grid, Container, Typography, Alert, Card, CardContent } from '@mui/material';
 import Breadcrumbs from '../components/Breadcrumbs';
 
 
@@ -14,29 +12,17 @@ export const getStaticProps = async () => {
 
     if (!data) {
         return {
-            // props: {
-            //     discounts: null,
-            //     status: response.status ? response.status : 404,
-            //     statusText: response.message ? response.message : ''
-            // }
             notFound: true,
         }
     }
 
     return {
-        // props: {
-        //     discounts: data,
-        //     statusCode: 200,
-        //     statusText: null
-        // }
         notFound: true,
     }
 }
 
-
 const Discounts = ({discounts, statusCode, statusText}) => {
     console.log(discounts, statusCode, statusText)
-
 
     return (
         <Layout>

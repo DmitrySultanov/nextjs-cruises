@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useFetching } from '../api/useFetching';
 import APIService from '../api/APIService';
-import Loader from './Loader';
-import { Typography, List, ListItem } from '@mui/material/';
 
 
 const PublicPlaces = () => {
@@ -16,7 +14,7 @@ const PublicPlaces = () => {
     
     useEffect(() => {
         fetchPlaces()
-    }, [])
+    }, [fetchPlaces])
 
     const placesMemo = useMemo(() => (
         {places, setPlaces}

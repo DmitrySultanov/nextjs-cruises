@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Box, Container, Typography, Button, Alert, 
-    Pagination, Card, CardContent, Skeleton } from '@mui/material';
+    Card, CardContent, Skeleton } from '@mui/material';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,7 +11,7 @@ import Layout from '../../components/Layout';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import APIService from '../../api/APIService';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDisplay, faRubleSign } from "@fortawesome/free-solid-svg-icons";
+import { faRubleSign } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/Cruises.module.scss';
 
 

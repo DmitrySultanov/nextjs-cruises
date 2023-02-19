@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Box, Container, Typography } from '@mui/material';
-import dynamic from 'next/dynamic';
+import { Box, Container, Typography } from '@mui/material';
 import CruisesSearch from '../Cruise/CruisesSearch';
 import styles from '../../styles/Home.module.scss';
 

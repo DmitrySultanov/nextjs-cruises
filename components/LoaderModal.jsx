@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Grid, CircularProgress, Box, Typography } from '@mui/material';
+import { Grid, CircularProgress, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 
 var stylingObject = {

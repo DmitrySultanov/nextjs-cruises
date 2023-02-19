@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Box, Container, Typography, Card, CardActions, CardContent } from '@mui/material';
+import { Grid, Box, Container, Typography, Card, CardContent } from '@mui/material';
 import styles from '../../styles/News.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -7,6 +7,7 @@ import APIService from '../../api/APIService';
 import Layout from '../../components/Layout';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import Dotdotdot from 'react-dotdotdot';
+
 
 export const getStaticProps = async () => {
     const response = await APIService.getAllNews(20)
@@ -16,7 +17,6 @@ export const getStaticProps = async () => {
         props: {allNews: data}
     }
 }
-
 
 const News = (allNews) => {
     console.log(allNews)

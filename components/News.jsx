@@ -8,9 +8,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Loader from './Loader';
 
+
 const News = ({title}) => {
     const [news, setNews] = useState([])
-    const [regions, setRegions] = useState([])
 
     const [fetchNews, isNewsLoading, newsError] = useFetching( async() => {
         const response = await APIService.getAllNews(4)

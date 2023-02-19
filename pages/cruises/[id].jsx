@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { Grid, Box, Container, Badge, Typography, Button, Table, TableBody, TableCell, TableRow, Alert } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,7 +10,6 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import ShipInfo from '../../components/Cruise/ShipInfo';
 import CruisePorts from '../../components/Cruise/CruisePorts';
 import APIService from '../../api/APIService';
-import { useFetching } from '../../api/useFetching';
 import ProgressBar from "@ramonak/react-progress-bar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRubleSign, faShip, faWater, faLocationDot } from "@fortawesome/free-solid-svg-icons";

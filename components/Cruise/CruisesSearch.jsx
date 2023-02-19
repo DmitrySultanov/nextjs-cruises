@@ -25,7 +25,7 @@ const CruisesSearch = () => {
 
     useEffect(() => {
         fetchCities()
-    }, [])
+    }, [fetchCities])
 
     useEffect(() => {
         router.prefetch('/cruises')
@@ -162,7 +162,6 @@ const CruisesSearch = () => {
                     </Grid>
                 </Box>
             </Box>
-            {/* { loading && <LoaderModal/>} */}
         </>
     );
 }

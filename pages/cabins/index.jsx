@@ -1,8 +1,6 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
-import { Grid, Box, Container, Typography, Button, Alert, 
-    Pagination, Card, CardContent, Skeleton, List, ListItem, Chip, Radio, RadioGroup, FormControlLabel, ListItemText } from '@mui/material';
-import { useRouter } from 'next/router';
+import { Grid, Box, Container, Button, Alert, Radio, RadioGroup, FormControlLabel } from '@mui/material';
 import Layout from '../../components/Layout';
 import Modal from '../../components/Modal';
 import Breadcrumbs from '../../components/Breadcrumbs';
@@ -34,14 +32,12 @@ export const getServerSideProps = async (context) => {
     }
 }
 
-
 const CabinsSearchResult = ({cabins, statusCode, statusText}) => {
-    const router = useRouter()
     const [openModal, setOpenModal] = useState(false)
     const [formdata, setFormData] = useState([])
     // document.body.style.cursor='default'
 
-    const { control, handleSubmit, formState: { errors }, setValue, reset } = useForm({
+    const { control, handleSubmit } = useForm({
         mode: "onBlur",
         defaultValues: {
             accessible_cabin: '',

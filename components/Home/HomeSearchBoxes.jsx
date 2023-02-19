@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Box, Container, Typography, Card, CardMedia, CardContent  } from '@mui/material';
+import React, { useEffect } from 'react';
+import { Grid, Box, Container, Typography, Card, CardMedia, CardContent } from '@mui/material';
 import Masonry from '@mui/lab/Masonry';
-import Image from 'next/image';
 import Link from 'next/link';
-import { useFetching } from '../../api/useFetching';
-import APIService from '../../api/APIService';
 import moment from 'moment';
 import { useRouter } from 'next/router';
 import Sidebar from '../Sidebar';

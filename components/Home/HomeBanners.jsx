@@ -1,6 +1,7 @@
 import React from 'react';
-import { Grid, Box, Container, Typography, Card, CardMedia, CardContent  } from '@mui/material';
+import { Grid, Box, Container } from '@mui/material';
 import Slider from '../Slider';
+
 
 const banners = [
     {

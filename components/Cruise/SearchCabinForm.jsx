@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState } from 'react';
 import { useForm, Controller } from "react-hook-form";
 import { Grid, Box, Alert, Button, TextField, 
     FormControl, FormHelperText } from '@mui/material/';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import Select from 'react-select';
-import { useFetching } from '../../api/useFetching';
-import APIService from '../../api/APIService';
 import styles from '../../styles/Modal.module.scss';
 
 
