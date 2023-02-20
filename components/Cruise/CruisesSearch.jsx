@@ -31,18 +31,14 @@ const CruisesSearch = () => {
         router.prefetch('/cruises')
     }, [router])
 
-    
-    const citiesMemo = useMemo(() => (
-        {cities, setCities}
-    ), [])
-        
     let citiesDepartures = []
-    if(citiesMemo.cities.data) {
-        citiesMemo.cities.data.map((obj) => {
+
+    if(!isCitiesLoading) {
+        for(var key in cities.data) {
             const newObject = {};
-            delete Object.assign(newObject, obj, {['label']: obj['name'], ['value']: obj['id'] })['name', 'id'];
+            delete Object.assign(newObject, cities.data[key], {['label']: cities.data[key]['name'], ['value']: cities.data[key]['id'] })['name', 'id'];
             citiesDepartures.push(newObject)
-        })
+        }
     }
 
     const durationOptions = [
