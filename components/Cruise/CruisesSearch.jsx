@@ -94,6 +94,7 @@ const CruisesSearch = () => {
                                     <CreatableSelect
                                         {...field}
                                         instanceId="city"
+                                        classNamePrefix="city"
                                         className={styles.select}
                                         options={citiesDepartures}
                                         isClearable
