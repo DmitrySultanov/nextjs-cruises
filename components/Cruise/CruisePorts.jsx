@@ -28,7 +28,7 @@ const CruisePorts = ({cruise}) => {
     useEffect(() => {
         fetchPortStart()
         fetchPortEnd()
-    }, [fetchPortStart, fetchPortEnd])
+    }, [])
 
     return (
         <Table aria-label="simple table" size="small">

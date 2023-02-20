@@ -28,7 +28,7 @@ export default class APIService {
                 'lengthMin': lengthMin,
                 'lengthMax': lengthMax,
                 'key': API_KEY_S,
-                'limit': params.limit ? params.limit : 50,
+                'limit': params.limit ? params.limit : 32,
                 'page': params.page ? params.page : 1,
             }
         })
@@ -89,8 +89,8 @@ export default class APIService {
                     'dateStartFrom': params.date,
                     'onlyFreeCabins': '1',
                     'key': API_KEY_S,
-                    // 'limit': params.limit ? params.limit : 32,
-                    // 'page': params.page ? params.page : 1,
+                    'limit': params.limit ? params.limit : 32,
+                    'page': params.page ? params.page : 1,
                 }
             })
 

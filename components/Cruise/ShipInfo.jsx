@@ -20,7 +20,7 @@ const ShipInfo = (shipId) => {
 
     useEffect(() => {
         fetchShip()
-    }, [fetchShip])
+    }, [])
 
     const shipMemo = useMemo(() => (
         {ship}

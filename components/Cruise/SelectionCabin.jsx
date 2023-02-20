@@ -16,7 +16,7 @@ const SelectionCabin = ({id}) => {
     
     useEffect(() => {
         fetchCabinsInfo()
-    }, [fetchCabinsInfo])
+    }, [])
 
     console.log(cabinsInfo)
 

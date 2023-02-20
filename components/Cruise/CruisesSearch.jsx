@@ -25,7 +25,7 @@ const CruisesSearch = () => {
 
     useEffect(() => {
         fetchCities()
-    }, [fetchCities])
+    }, [])
 
     useEffect(() => {
         router.prefetch('/cruises')
@@ -34,7 +34,7 @@ const CruisesSearch = () => {
     
     const citiesMemo = useMemo(() => (
         {cities, setCities}
-    ), [cities])
+    ), [])
         
     let citiesDepartures = []
     if(citiesMemo.cities.data) {
@@ -75,7 +75,7 @@ const CruisesSearch = () => {
                 city: data.city.value, 
                 date: data.date, 
                 duration: data.duration.value,
-                limit: 34,
+                limit: 32,
                 page: 1
             }
         })
