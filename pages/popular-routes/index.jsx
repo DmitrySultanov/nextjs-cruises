@@ -40,11 +40,12 @@ const PopularRoutes = ({cruises, statusCode, statusText}) => {
     console.log(cruises)
 
     const handlePaginationChange = (event, value) => {
+        console.log(event, value, router)
         router.push({
-            pathname: '/cruises',
+            pathname: '/popular-routes',
             query: { 
-                popularRoutes: router.query.popularRouteId,
-                dateStartFrom: router.query.date,
+                date: router.query.date,
+                popularRouteId: router.query.popularRouteId,
                 limit: 32,
                 page: value,
             }
