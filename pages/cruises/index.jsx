@@ -81,7 +81,7 @@ const RiverCruises = ({cruises, statusCode, statusText}) => {
                     {statusCode === 200 
                         ?   <>
                                 <Grid container spacing={2}>
-                                    {cruises.data && cruises.data.map((cruise) => 
+                                    {cruises.data?.map((cruise) => 
                                         // <Grid item sm={6} md={4} lg={3} key={cruise.id} style={cruise.freeCabins ? {'': ''} : {display: 'none'}}>
                                         <Grid item sm={6} md={4} lg={3} key={cruise.id}>
                                             <Card className={styles.card}>

@@ -30,7 +30,7 @@ const PublicPlaces = ({places, statusCode, statusText}) => {
                 {statusCode === 200
                     ?   <Box className={styles.publicPlaces}>
                             <Grid container spacing={2}>
-                                {places.data && places.data.map((place) => 
+                                {places.data?.map((place) => 
                                 <>
                                     <Grid item lg={3} key={place.id}>
                                         <Card className={styles.card}>

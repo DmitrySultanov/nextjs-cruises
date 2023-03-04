@@ -36,7 +36,7 @@ const News = ({title}) => {
                     :   isNewsLoading
                     ?   <Loader />
                     :   <List className={styles.newsComponentList}>
-                            {newsMemo.news.data && newsMemo.news.data.map((item, idx) => 
+                            {newsMemo.news.data?.map((item, idx) => 
                                 <ListItem key={idx}>
                                     <Typography className={styles.dateNews} variant="body1">{item.dateNews}</Typography>
                                     <Link href={`/news/[id]`} as={`/news/${item.id}`}><a>{item.name}</a></Link>    

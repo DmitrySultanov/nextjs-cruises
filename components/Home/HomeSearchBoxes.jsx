@@ -217,7 +217,7 @@ const HomeSearchBoxes = () => {
                     <Grid container spacing={2}>
                         <Grid item lg={9} md={12} sm={12} xs={12}>
                             <Masonry columns={{ xs: 1, sm: 2, lg: 3 }} spacing={3} className={styles.masonry}>
-                                {searchBoxesData && searchBoxesData.map((item, index) => 
+                                {searchBoxesData?.map((item, index) => 
                                     <Card key={item.id} className={styles.card}>
                                         <Link href={{
                                             pathname: item.href.pathname,

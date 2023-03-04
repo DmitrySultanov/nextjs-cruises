@@ -27,7 +27,7 @@ const News = (allNews) => {
                     <Breadcrumbs />
                     <Typography variant="h4" component="h1">Все новости</Typography>
                     <Grid container spacing={2}>
-                        {allNews && allNews.allNews.data.map((news, idx) => 
+                        {allNews.allNews.data?.map((news, idx) => 
                             <Grid item lg={3} key={idx}>
                                 <Card className={styles.card}>
                                     <Box className={styles.cardMedia}>

@@ -10,7 +10,7 @@ const CabinTypes = ({types}) => {
                 ?   <Box className="CabinTypes" sx={{mt: 1}}>
                         <Typography variant="h6">Типы кают</Typography>
                         <Grid container spacing={2}>
-                            {types.map((type, idx) => 
+                            {types?.map((type, idx) => 
                                 <CabinType type={type} key={idx} />
                             )}
                         </Grid>

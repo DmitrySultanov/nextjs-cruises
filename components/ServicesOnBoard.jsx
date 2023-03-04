@@ -33,7 +33,7 @@ const ServicesOnBoard = () => {
                             ?   <>
                                     <Typography style={{fontWeight: '700'}} variant="subtitle1">Услуги на борту:</Typography>
                                     <List sx={{display: 'flex', flexWrap: 'wrap'}}>
-                                        {servicesMemo.services.data.map((service) => 
+                                        {servicesMemo.services.data?.map((service) => 
                                             <ListItem sx={{py: .25, py: .5, flexWrap: 'wrap'}} key={service.id}>
                                                 <Typography sx={{width: '100%'}} variant="body2">— {service.name}</Typography>
                                                 {service.description ? <Typography variant="body2" sx={{color: '#949494', fontSize: '.8rem'}}>{service.description}</Typography> : null}

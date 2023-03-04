@@ -137,7 +137,7 @@ export default function Cruise({cruise, statusCode, statusText}) {
                         <TableRow sx={{ '& > td': { border: 0 } }}>
                           <TableCell colSpan="2" sx={{pl: 0}}>
                           <FontAwesomeIcon icon={faWater} />&nbsp;
-                          {cruise.rivers && cruise.rivers.map((river, idx) =>
+                          {cruise.rivers?.map((river, idx) =>
                               <Typography key={idx} variant="body2" component="span" style={{marginRight: '.25rem'}}>
                               {river.name},
                               </Typography>

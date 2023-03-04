@@ -37,7 +37,7 @@ const Discounts = ({discounts, statusCode, statusText}) => {
                         {statusCode === 200
                             ?   <>
                                     <Grid container spacing={2}>
-                                        {discounts.data != null && discounts.data.map((item, idx) =>
+                                        {discounts.data?.map((item, idx) =>
                                             <Grid item sm={4} md={4} lg={3} key={idx}>
                                                 <Card>
                                                     <CardContent>
