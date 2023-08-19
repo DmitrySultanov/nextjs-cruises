@@ -1,24 +1,62 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
 import { CITIES_DEPARTURES_ROUTE, NEWS_ROUTE, API_KEY_S, API_ROUTE, 
     API_KEY, SERVICES_ON_BOARD, PUBLIC_PLACES, PORTS, POPULAR_ROUTES, REGIONS, DISCOUNTS } from "../utils/api";
 
+interface IGetCruises {
+    city: string
+    date: string
+    duration: string
+    lengthMin: number
+    lengthMax: number
+    API_KEY_S: string
+    limit: number
+    page: number
+}
+
+interface IGetCruiseCabinSearch {
+    id: number
+    adult_count: number
+    retiree_count?: number
+    child_place_count: number
+    child_without_place_count: number
+    children_age: string | string[] | any
+    children_age_without_place: string | string[]
+    key: string
+    limit: number
+    page: number
+}
+
+interface IGetPopularRouteById {
+    popularRouteId: number
+    date: string
+    API_KEY_S: string
+    limit: number
+    page: number
+}
+
+interface IGetShips {
+    API_KEY_S: string
+    limit: number
+    page: number
+}
+
 export default class APIService {
-    static async getCruises(params) {
+    static async getCruises(params: IGetCruises) {
         let lengthMin,
             lengthMax;
         switch (params.duration) {
-        case '1':
-            lengthMin = 1;
-            lengthMax = 5;
-            break;
-        case '2':
-            lengthMin = 5;
-            lengthMax = 10;
-            break;
-        case '3':
-            lengthMin = 11;
-            lengthMax = 25;
-            break;
+            case '1':
+                lengthMin = 1;
+                lengthMax = 5;
+                break;
+            case '2':
+                lengthMin = 5;
+                lengthMax = 10;
+                break;
+            case '3':
+                lengthMin = 11;
+                lengthMax = 25;
+                break;
         }
 
         const response = await axios.get(API_ROUTE + `cruises`, {
@@ -35,17 +73,25 @@ export default class APIService {
         return response
     }
 
-    static async getCruise(id) {
-        const response = await axios.get(API_ROUTE + `cruises/${id}` + API_KEY)
-        return response
+    static async getCruise(id: number) {
+        try {
+            const response = await axios.get(API_ROUTE + `cruises/${id}` + API_KEY)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
-    static async getCruiseCabins(id) {
-        const response = await axios.get(API_ROUTE + `cruises/${id}/cabins/` + API_KEY)
-        return response
+    static async getCruiseCabins(id: number) {
+        try {
+            const response = await axios.get(API_ROUTE + `cruises/${id}/cabins/` + API_KEY)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
-    static async getCruiseCabinSearch(params) {
+    static async getCruiseCabinSearch(params: IGetCruiseCabinSearch) {
         try {
             const response = await axios.get(API_ROUTE + `cruises/${params.id}/cabins/search`, {
                 params: {
@@ -67,21 +113,33 @@ export default class APIService {
     }
 
     static async getCities() {
-        const response = await axios.get(CITIES_DEPARTURES_ROUTE)
-        return response
+        try {
+            const response = await axios.get(CITIES_DEPARTURES_ROUTE)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
     static async getRegions() {
-        const response = await axios.get(REGIONS)
-        return response
+        try {
+            const response = await axios.get(REGIONS)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
-    static async getRegion(id) {
-        const response = await axios.get(API_ROUTE + `regions/${id}` + API_KEY)
-        return response
+    static async getRegion(id: number) {
+        try {
+            const response = await axios.get(API_ROUTE + `regions/${id}` + API_KEY)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
-    static async getPopularRouteById(params) {
+    static async getPopularRouteById(params: IGetPopularRouteById) {
         try {
             const response = await axios.get(API_ROUTE + `cruises`, {
                 params: {
@@ -93,7 +151,6 @@ export default class APIService {
                     'page': params.page ? params.page : 1,
                 }
             })
-
             return response
         } catch (error) {
             return error
@@ -101,21 +158,29 @@ export default class APIService {
     }
 
     static async getPopularRoutes() {
-        const response = await axios.get(POPULAR_ROUTES)
-        return response
+        try {
+            const response = await axios.get(POPULAR_ROUTES)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
-    static async getPopularRoute(id) {
-        const response = await axios.get(API_ROUTE + `cruises`, {
-            params: {
-                'popularRoutes': String(id),
-                'key': API_KEY_S,
-            }
-        })
-        return response
+    static async getPopularRoute(id: number) {
+        try {
+            const response = await axios.get(API_ROUTE + `cruises`, {
+                params: {
+                    'popularRoutes': String(id),
+                    'key': API_KEY_S,
+                }
+            })
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
-    static async getShips(params) {
+    static async getShips(params: IGetShips) {
         try {
             let response = null;
             if(params) {
@@ -142,7 +207,7 @@ export default class APIService {
         }
     }
 
-    static async getShip(id) {
+    static async getShip(id: number) {
         try {
             const response = await axios.get(API_ROUTE + `ships-active/${id}` + API_KEY)
             return response
@@ -152,18 +217,26 @@ export default class APIService {
     }
 
     static async getPorts() {
-        const response = await axios.get(PORTS)
-        return response
-    }
-
-    static async getPort(id) {
-        const response = await axios.get(API_ROUTE + `ports/${id}` + API_KEY)
-        return response
-    }
-
-    static async getAllNews(limit = 10) {
         try {
-            const response = await axios.get(NEWS_ROUTE, {
+            const response = await axios.get(PORTS)
+            return response
+        } catch (error) {
+            return error
+        }
+    }
+
+    static async getPort(id: number) {
+        try {
+            const response = await axios.get(API_ROUTE + `ports/${id}` + API_KEY)
+            return response
+        } catch (error) {
+            return error
+        }
+    }
+
+    static async getAllNews(limit: number = 10) {
+        try {
+            const response: AxiosResponse<any, any> = await axios.get(NEWS_ROUTE, {
                 params:{
                     'limit': limit,
                 }
@@ -174,19 +247,31 @@ export default class APIService {
         }
     }
 
-    static async getNews(id) {
-        const response = await axios.get(API_ROUTE + `news/${id}` + API_KEY)
-        return response
+    static async getNews(id: number) {
+        try {
+            const response = await axios.get(API_ROUTE + `news/${id}` + API_KEY)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
     static async getServicesOnBoard() {
-        const response = await axios.get(SERVICES_ON_BOARD)
-        return response
+        try {
+            const response = await axios.get(SERVICES_ON_BOARD)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
-    static async getServiceOnBoard(id) {
-        const response = await axios.get(API_ROUTE + `onboard-services/${id}` + API_KEY)
-        return response
+    static async getServiceOnBoard(id: number) {
+        try {
+            const response = await axios.get(API_ROUTE + `onboard-services/${id}` + API_KEY)
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
     static async getPublicPlaces(limit = 50) {
@@ -203,7 +288,7 @@ export default class APIService {
         }
     }
 
-    static async getDiscounts(ship) {
+    static async getDiscounts(ship: string) {
         try {
             const response = await axios.get(DISCOUNTS, {
                 params:{

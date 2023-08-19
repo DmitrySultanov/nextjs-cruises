@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Button, Alert, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 
+interface IModal {
+    accessible_cabin: string
+}
 
-const Modal = ({openModal, setOpenModal, data}) => {
-    console.log(data)
+interface IModalProps {
+    openModal: boolean
+    setOpenModal: (boolean: boolean) => void
+    data: IModal
+}
+
+
+const Modal:FC<IModalProps> = ({openModal, setOpenModal, data}) => {
 
     const handleModalClose = () => {
         setOpenModal(false);

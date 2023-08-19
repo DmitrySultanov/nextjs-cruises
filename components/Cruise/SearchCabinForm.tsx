@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useForm, Controller } from "react-hook-form";
+import React, { FC, useState } from 'react';
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { Grid, Box, Alert, Button, TextField, 
     FormControl, FormHelperText } from '@mui/material/';
 import { useRouter } from 'next/router';
@@ -8,17 +8,31 @@ import Select from 'react-select';
 import styles from '../../styles/Modal.module.scss';
 
 
-const SearchCabinForm = () => {
+interface OptionType {
+    value: string
+    label: string
+}
+
+interface ISearchCabin {
+    adult_count: OptionType
+    child_place_count: OptionType
+    child_without_place_count: OptionType
+    children_age: string
+    children_age_without_place: string
+}
+
+
+const SearchCabinForm: FC = () => {
     const router = useRouter()
     
-    const adultCountOptions = [
+    const adultCountOptions: OptionType[] = [
         { value: '1', label: '1' },
         { value: '2', label: '2' },
         { value: '3', label: '3' },
         { value: '4', label: '4' },
     ]
 
-    const childPlaceCountOptions = [
+    const childPlaceCountOptions: OptionType[] = [
         { value: '0', label: '0' },
         { value: '1', label: '1' },
         { value: '2', label: '2' },
@@ -26,7 +40,7 @@ const SearchCabinForm = () => {
         { value: '4', label: '4' },
     ]
 
-    const childWithoutPlaceCount = [
+    const childWithoutPlaceCount: OptionType[] = [
         { value: '0', label: '0' },
         { value: '1', label: '1' },
         { value: '2', label: '2' },
@@ -49,8 +63,8 @@ const SearchCabinForm = () => {
     const [childrenAgeWithoutPlaceDisabled, setChildrenAgeWithoutPlaceDisabled] = useState(true)
 
 
-    const handleChildPlaceCountChange = e => {
-        if(+e.value !== 0) {
+    const handleChildPlaceCountChange = (selectedOption: OptionType) => {
+        if(+selectedOption.value !== 0) {
             setChildrenAgeDisabled(false)
             clearErrors('children_age')
         } else {
@@ -58,11 +72,11 @@ const SearchCabinForm = () => {
             clearErrors('children_age')
             setValue('children_age', '')
         }
-        setValue('child_place_count', e)
+        setValue('child_place_count', selectedOption)
     }
 
-    const handleChildWithoutPlaceCountChange = e => {
-        if(+e.value !== 0) {
+    const handleChildWithoutPlaceCountChange = (selectedOption: OptionType) => {
+        if(+selectedOption.value !== 0) {
             setChildrenAgeWithoutPlaceDisabled(false)
             clearErrors('children_age_without_place')
         } else {
@@ -70,11 +84,11 @@ const SearchCabinForm = () => {
             clearErrors('children_age_without_place')
             setValue('children_age_without_place', '')
         }
-        setValue('child_without_place_count', e)
+        setValue('child_without_place_count', selectedOption)
     }
 
-    const isChildrenAgeValid = (value, elem) => {
-        const array = value.split(',')
+    const isChildrenAgeValid = (value: string, elem: any) => {
+        const array = value.length != 0 ? value.split(',') : [];
         if(+getValues(elem).value !== array.length) {
             return false
         } else {
@@ -97,7 +111,7 @@ const SearchCabinForm = () => {
     //     fetchCabinSearch()
     // }, [formData])
 
-    const onSubmit = (data) => {
+    const onSubmit: SubmitHandler<ISearchCabin> = (data) => {
         // setFormData(data)
         setLoading(true)
         router.push({
@@ -125,7 +139,6 @@ const SearchCabinForm = () => {
                         <FormControl fullWidth className={styles.formControl}>
                             <FormHelperText>Кол-во взрослых мест в каюте</FormHelperText>
                             <Controller
-                                id="adult_count"
                                 name="adult_count"
                                 control={control}
                                 rules={{ required: true }}
@@ -143,7 +156,6 @@ const SearchCabinForm = () => {
                         <FormControl fullWidth className={styles.formControl}>
                             <FormHelperText>Кол-во детских мест</FormHelperText>
                             <Controller
-                                id="child_place_count"
                                 name="child_place_count"
                                 control={control}
                                 render={({ field: { onChange, value} }) => 
@@ -151,7 +163,7 @@ const SearchCabinForm = () => {
                                     className={styles.select}
                                     options={childPlaceCountOptions}
                                     defaultValue={childPlaceCountOptions[0]}
-                                    onChange={handleChildPlaceCountChange}
+                                    onChange={(option) => handleChildPlaceCountChange(option!)}
                                 />
                             } />
                         </FormControl>
@@ -159,7 +171,6 @@ const SearchCabinForm = () => {
                         <FormControl fullWidth className={styles.formControl}>
                             <FormHelperText>Возраста детей, размещаемых на отдельных местах</FormHelperText>
                             <Controller
-                                id="children_age"
                                 name="children_age"
                                 control={control}
                                 rules={
@@ -206,7 +217,6 @@ const SearchCabinForm = () => {
                         <FormControl fullWidth className={styles.formControl}>
                             <FormHelperText>Кол-во детей, размещаемых без места</FormHelperText>
                             <Controller
-                                id="child_without_place_count"
                                 name="child_without_place_count"
                                 control={control}
                                 render={({ field }) => 
@@ -214,7 +224,7 @@ const SearchCabinForm = () => {
                                     {...field}
                                     className={styles.select}
                                     options={childWithoutPlaceCount}
-                                    onChange={handleChildWithoutPlaceCountChange}
+                                    onChange={(option) => handleChildWithoutPlaceCountChange(option!)}
                                 />
                             } />
                         </FormControl>
@@ -222,7 +232,6 @@ const SearchCabinForm = () => {
                         <FormControl fullWidth className={styles.formControl}>
                             <FormHelperText>Возраста детей, размещаемых без отдельного места</FormHelperText>
                             <Controller
-                                id="children_age_without_place"
                                 name="children_age_without_place"
                                 control={control}
                                 rules={

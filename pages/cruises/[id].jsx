@@ -3,6 +3,7 @@ import { Grid, Box, Container, Badge, Typography, Button, Table, TableBody, Tabl
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Layout from '../../components/Layout';
@@ -52,8 +53,6 @@ export default function Cruise({cruise, statusCode, statusText}) {
   const handleOpenBookingModal = () => {
     setOpenBookingModal(true)
   } 
-
-  console.log(cruise)
 
   return (
     <Layout>
@@ -162,7 +161,7 @@ export default function Cruise({cruise, statusCode, statusText}) {
                       </TableBody>
                     </Table>
 
-                    <CruisePorts cruise={cruise} />
+                    <CruisePorts portStartId={cruise.portStart} portEndId={cruise.portEnd} />
                     
                     <Box sx={{mt: 2}}>
                       {cruise.min_price_rur
@@ -223,3 +222,30 @@ export default function Cruise({cruise, statusCode, statusText}) {
     </Layout>
   )
 }
+
+// export async function getStaticProps(context) {
+//   const response = await APIService.getCruise(context.params.id)
+//   const data = await response.data;
+
+//   return {
+//     props: { 
+//       cruise: data,
+//       statusCode: 200,
+//       statusText: null
+//     }
+//   }
+// }
+
+// export async function getStaticPaths() {
+//   const response = await APIService.getCruises({})
+//   const cruises = await response.data;
+  
+//   const paths = cruises.map((cruise) => ({
+//     params: {id: cruise.id}
+//   }))
+
+//   return {
+//     paths,
+//     fallback: false
+//   }
+// }

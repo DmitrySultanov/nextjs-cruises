@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, KeyboardEvent, MouseEvent, ReactElement, useState } from 'react';
 import Link from 'next/link';
 import { Grid, Box, Container, AppBar, Slide, useScrollTrigger, List, ListItem, SwipeableDrawer, IconButton  } from '@mui/material';
 import styles from '../styles/Header.module.scss';
@@ -8,25 +8,44 @@ import { faVk, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons
 import { useRouter } from 'next/router';
 
 
-const Header = (props) => {
+interface Props {
+    /**
+     * Injected by the documentation to work in an iframe.
+     * You won't need it on your project.
+     */
+    window?: () => Window;
+    children: ReactElement;
+}
+
+
+const Header: FC = (props) => {
     const router = useRouter()
     const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
-    const [stateDrawer, setStateDrawer] = useState(false)
+    const [stateDrawer, setStateDrawer] = useState<boolean>(false)
 
-    const toggleDrawer = (state) => (event) => {
+    const toggleDrawer = (state: boolean) => (event: MouseEvent) => {
         if (
           event &&
-          event.type === 'keydown' &&
-          (event.key === 'Tab' || event.key === 'Shift')
+          event.type === 'keydown' 
         ) {
           return;
         }
-    
         setStateDrawer(state);
     }
 
-    function HideOnScroll(props) {
+    const toggleDrawerKeyboard = (state: boolean) => (event: KeyboardEvent) => {
+        if (
+          event &&
+          event.type === 'keydown' 
+          && (event.key === 'Tab' || event.key === 'Shift')
+        ) {
+          return;
+        }
+        setStateDrawer(state);
+    }
+
+    function HideOnScroll(props: Props) {
         const { children, window } = props;
         // Note that you normally won't need to set the window ref as useScrollTrigger
         // will default to window.
@@ -49,7 +68,6 @@ const Header = (props) => {
                     <Container maxWidth="lg">
                         <Grid container spacing={0} className={styles.headerRow} alignItems="center">
                             <Grid item xs={3} lg={2} xl={2}>
-                                {/* <Link href="/" passHref><a><Image className={styles.logo} src="/img/logo_arland.png" alt="logo" width="128" height="40" /></a></Link> */}
                                 <Link href="/" passHref><a className={styles.logo}>LOGOTYPE</a></Link>
                             </Grid>
                             <Grid item xs={9} lg={10} xl={10}>
@@ -96,7 +114,10 @@ const Header = (props) => {
                                                             <a className={styles.whatsapp} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faWhatsapp} /></a>
                                                         </Link>
                                                     </Box>
-                                                    <IconButton className={styles.menuToggler} onClick={toggleDrawer(true)} sx={{ display: { xs: 'flex', lg: 'none' }, ml: 2 }}>
+                                                    <IconButton className={styles.menuToggler} 
+                                                                onClick={toggleDrawer(true)} 
+                                                                onKeyPress={toggleDrawerKeyboard(true)} 
+                                                                sx={{ display: { xs: 'flex', lg: 'none' }, ml: 2 }}>
                                                         <FontAwesomeIcon icon={faBars} />
                                                     </IconButton>
                                                 </Box>
@@ -109,6 +130,7 @@ const Header = (props) => {
                     </Container>
                 </AppBar>
             </HideOnScroll>
+
             <SwipeableDrawer
                 anchor="right"
                 open={stateDrawer}

@@ -37,7 +37,6 @@ export const getServerSideProps = async (context) => {
 
 const PopularRoutes = ({cruises, statusCode, statusText}) => {
     const router = useRouter()
-    console.log(cruises)
 
     const handlePaginationChange = (event, value) => {
         console.log(event, value, router)

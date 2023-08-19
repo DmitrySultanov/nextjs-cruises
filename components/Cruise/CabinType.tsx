@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Grid, Box, Card, CardContent, Skeleton, Typography } from '@mui/material/';
 import styles from '../../styles/Cruises.module.scss';
+// @ts-ignore
 import ReadMoreReact from 'read-more-react';
 import Slider from '../Slider';
+import { IType } from '../../types';
 
 
-const CabinType = ({type}) => {
+interface ITypeProps {
+    type: IType
+}
+
+const CabinType: FC<ITypeProps> = ({type}) => {
     if(type.description) {
         var text = type.description.replace(/(<([^>]+)>)/ig, '').replace(/&nbsp;/ig, '').replace(/&ndash;/ig, '').replace(/&laquo;/ig, '').replace(/&raquo;/ig, '');
     } else {
@@ -13,12 +19,12 @@ const CabinType = ({type}) => {
     }
 
     setTimeout(() => {
-        var textGroups = document.getElementsByClassName('display-text-group');
+        var textGroups = document.getElementsByClassName('display-text-group') as HTMLCollectionOf<HTMLElement>;
 
         for (let textGroup of textGroups) {
             textGroup.onclick = function(event) {
-                let target = event.target;
-    
+                let target = event.target as HTMLInputElement;
+
                 if (target.classList.value === 'read-more-button') {
                     RMHandleClick(target)
                 } else if(target.classList.value === 'displayed-text') {
@@ -29,13 +35,13 @@ const CabinType = ({type}) => {
     }, 100)
     
     
-    function RMHandleClick(target) {
-        const container = target.parentNode,
-        button = `<div class="created-button">Свернуть</div>`;
+    function RMHandleClick(target: HTMLElement) {
+        const container = target.parentNode as HTMLElement,
+              button = `<div class="created-button">Свернуть</div>` as unknown as string;
 
         container.insertAdjacentHTML('afterend', button);
 
-        const createdButtons = document.querySelectorAll('.created-button');
+        const createdButtons = document.querySelectorAll('.created-button') as NodeListOf<HTMLElement>;
         createdButtons.forEach((button) => button.onclick = CRhandleClick)
     }
     
@@ -44,8 +50,8 @@ const CabinType = ({type}) => {
         this.remove();
     }
 
-    function RMHandleCleaner(target) {
-        const btn = target.parentElement.querySelector('.created-button');
+    function RMHandleCleaner(target: HTMLElement) {
+        const btn: HTMLElement = target.parentElement!.querySelector('.created-button') as HTMLElement;
         if(btn) btn.remove()
     }
     

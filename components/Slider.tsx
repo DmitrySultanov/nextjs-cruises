@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box } from '@mui/material';
 import { Swiper, SwiperSlide } from 'swiper/react';
+// @ts-ignore  
 import SwiperCore, {Autoplay} from 'swiper/core';
 import { Navigation, Pagination } from 'swiper';
 import Image from 'next/image';
@@ -10,9 +11,25 @@ import 'swiper/css/pagination';
 import classNames from 'classnames';
 
 
+interface ISliderPhoto {
+    description?: string
+    filename: string
+    filesize: number
+    filetype: string
+    position: number
+}
+
+interface ISliderProps {
+    photos: ISliderPhoto[] | string[]
+    customClass?: string
+    slidesPerView: number
+    autoplay?: boolean
+}
+
 SwiperCore.use([Autoplay]);
 
-const Slider = ({ photos, slidesPerView, customClass, autoplay = false }) => {
+const Slider:FC <ISliderProps> = ({ photos, slidesPerView, customClass, autoplay = false }) => {
+
     return (
         <Swiper
             className={classNames('Slider')}
@@ -45,8 +62,9 @@ const Slider = ({ photos, slidesPerView, customClass, autoplay = false }) => {
                             layout="fill" 
                             placeholder="blur" 
                             blurDataURL="../img/blur-large.jpg" 
-                            src={photo.filename ? photo.filename : photo} 
-                            alt={photo.description ? photo.description : ''} 
+                            // src={photo.filename ? photo.filename : photo}
+                            src={typeof photo === 'string' ? photo : photo.filename}
+                            alt={typeof photo === 'string' ? '' : photo.description ? photo.description : ''} 
                         />
                     </Box>
                 </SwiperSlide>

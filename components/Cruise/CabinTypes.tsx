@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Grid, Box, Typography } from '@mui/material/';
 import CabinType from './CabinType';
+import { IType } from '../../types';
 
 
-const CabinTypes = ({types}) => {
+interface ITypesProps {
+    types: IType[]
+    idx: number
+}
+
+const CabinTypes: FC<ITypesProps> = ({types}) => {
+
     return (
         <>  
             {types

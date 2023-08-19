@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FC } from 'react';
 import { Grid, CircularProgress, Typography } from '@mui/material';
 import Dialog from '@mui/material/Dialog';
 
@@ -13,8 +13,8 @@ var stylingObject = {
     }
   }
 
-const LoaderModal = () => {
-    const [open, setOpen] = useState(true);
+const LoaderModal: FC = () => {
+    const [open, setOpen] = useState<boolean>(true);
 
     return (
         <Dialog open={open}  maxWidth="xs">

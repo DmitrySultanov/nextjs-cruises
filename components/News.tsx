@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, FC } from 'react';
 import { Box, List, ListItem, Typography, Alert } from '@mui/material';
 import { useFetching } from '../api/useFetching';
 import APIService from '../api/APIService';
@@ -9,12 +9,25 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Loader from './Loader';
 
 
-const News = ({title}) => {
-    const [news, setNews] = useState([])
+interface INewsProps {
+    title: string
+}
+
+interface INews {
+    id: number
+    name: string
+    dateNews: string
+    image?: string
+    text: string
+}
+
+
+const News: FC<INewsProps> = ({title}) => {
+    const [news, setNews] = useState<INews[] | []>([])
 
     const [fetchNews, isNewsLoading, newsError] = useFetching( async() => {
-        const response = await APIService.getAllNews(4)
-        const data = await response.data;
+        const response: any = await APIService.getAllNews(4)
+        const data = await response.data.data;
         setNews(data)
     })
 
@@ -22,10 +35,9 @@ const News = ({title}) => {
         fetchNews()
     }, [])
 
-
-    const newsMemo = useMemo(() => (
-        {news, setNews}
-    ), [news])
+    // const newsMemo = useMemo(() => (
+    //     {news, setNews}
+    // ), [news])
 
     return (
         <>
@@ -36,7 +48,7 @@ const News = ({title}) => {
                     :   isNewsLoading
                     ?   <Loader />
                     :   <List className={styles.newsComponentList}>
-                            {newsMemo.news.data?.map((item, idx) => 
+                            {news?.map((item, idx) => 
                                 <ListItem key={idx}>
                                     <Typography className={styles.dateNews} variant="body1">{item.dateNews}</Typography>
                                     <Link href={`/news/[id]`} as={`/news/${item.id}`}><a>{item.name}</a></Link>    

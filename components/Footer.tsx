@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Link from 'next/link';
 import { Grid, Box, Container } from '@mui/material';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +7,7 @@ import { faVk, faTelegram, faWhatsapp } from '@fortawesome/free-brands-svg-icons
 import styles from '../styles/Footer.module.scss';
 
 
-const Footer = () => {
+const Footer: FC = () => {
     return (
         <Box component="footer" className={styles.footer}>
             <Box className={styles.footerRow}>

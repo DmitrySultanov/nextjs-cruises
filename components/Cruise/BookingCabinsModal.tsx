@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, ReactNode } from 'react';
 import { Button, Dialog, DialogContent, DialogTitle, DialogActions, IconButton } from '@mui/material';
 import SearchCabinForm from './SearchCabinForm';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,15 +6,28 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/Modal.module.scss';
 
 
-const BookingCabinsModal = ({openBookingModal, setOpenBookingModal, cruiseId}) => {
+interface IBookingCabinsModalProps {
+  openBookingModal: boolean
+  setOpenBookingModal: (boolean: boolean ) => void
+  cruiseId: number
+}
 
-    const CustomDialogTitle = (props) => {
+interface ICustomDialogTitle {
+  id?: string
+  className?: string
+  children: ReactNode
+  onClose: (boolean: boolean) => void
+}
+
+const BookingCabinsModal: FC<IBookingCabinsModalProps> = ({openBookingModal, setOpenBookingModal, cruiseId}) => {
+
+    const CustomDialogTitle = (props: ICustomDialogTitle) => {
       const { children, onClose, ...other } = props;
     
       return (
         <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
           {children}
-          {onClose ? (
+          {handleClose ? (
             <IconButton
               aria-label="close"
               onClick={handleClose}
