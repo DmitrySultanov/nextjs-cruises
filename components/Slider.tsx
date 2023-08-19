@@ -12,11 +12,12 @@ import classNames from 'classnames';
 
 
 interface ISliderPhoto {
+    id?: number
     description?: string
     filename: string
-    filesize: number
-    filetype: string
-    position: number
+    filesize?: number
+    filetype?: string
+    position?: number
 }
 
 interface ISliderProps {
