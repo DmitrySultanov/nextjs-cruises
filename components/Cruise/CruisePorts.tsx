@@ -28,14 +28,14 @@ const CruisePorts: FC<IPortsIdProps> = ({portStartId, portEndId}) => {
 
     const [fetchPortStart, isPortStartLoading, PortStartError] = useFetching( async() => {
         if(!portStartId) return
-        const response = await APIService.getPort(portStartId)
+        const response: any = await APIService.getPort(portStartId)
         const data = await response.data;
         setPortStart(data)
     })
 
     const [fetchPortEnd, isPortEndLoading, PortEndError] = useFetching( async() => {
         if(!portEndId) return
-        const response = await APIService.getPort(portEndId)
+        const response: any = await APIService.getPort(portEndId)
         const data = await response.data;
         setPortEnd(data)
     })
