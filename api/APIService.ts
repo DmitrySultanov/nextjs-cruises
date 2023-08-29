@@ -42,35 +42,39 @@ interface IGetShips {
 
 export default class APIService {
     static async getCruises(params: IGetCruises) {
-        let lengthMin,
-            lengthMax;
-        switch (params.duration) {
-            case '1':
-                lengthMin = 1;
-                lengthMax = 5;
-                break;
-            case '2':
-                lengthMin = 5;
-                lengthMax = 10;
-                break;
-            case '3':
-                lengthMin = 11;
-                lengthMax = 25;
-                break;
-        }
-
-        const response = await axios.get(API_ROUTE + `cruises`, {
-            params: {
-                'startCity': params.city,
-                'dateStartFrom': params.date,
-                'lengthMin': lengthMin,
-                'lengthMax': lengthMax,
-                'key': API_KEY_S,
-                'limit': params.limit ? params.limit : 32,
-                'page': params.page ? params.page : 1,
+        try {
+            let lengthMin,
+                lengthMax;
+            switch (params.duration) {
+                case '1':
+                    lengthMin = 1;
+                    lengthMax = 5;
+                    break;
+                case '2':
+                    lengthMin = 5;
+                    lengthMax = 10;
+                    break;
+                case '3':
+                    lengthMin = 11;
+                    lengthMax = 25;
+                    break;
             }
-        })
-        return response
+    
+            const response = await axios.get(API_ROUTE + `cruises`, {
+                params: {
+                    'startCity': params.city,
+                    'dateStartFrom': params.date,
+                    'lengthMin': lengthMin,
+                    'lengthMax': lengthMax,
+                    'key': API_KEY_S,
+                    'limit': params.limit ? params.limit : 32,
+                    'page': params.page ? params.page : 1,
+                }
+            })
+            return response
+        } catch (error) {
+            return error
+        }
     }
 
     static async getCruise(id: number) {
@@ -288,7 +292,7 @@ export default class APIService {
         }
     }
 
-    static async getDiscounts(ship: string) {
+    static async getDiscounts(ship: number) {
         try {
             const response = await axios.get(DISCOUNTS, {
                 params:{

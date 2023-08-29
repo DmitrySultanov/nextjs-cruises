@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Grid, Box, Button, TextField, Typography, Container } from '@mui/material/';
-import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import classNames from 'classnames';
+// @ts-ignore
 import InputMask from "react-input-mask";
 import styles from '../styles/Form.module.scss';
 
 
-const FeedbackForm = () => {
+interface IFeedbackForm {
+    name: string
+    phone: string
+}
+
+const FeedbackForm: FC = () => {
     const { control, handleSubmit, formState: { errors }, reset } = useForm({
         mode: "onBlur",
         defaultValues: {
@@ -15,7 +21,7 @@ const FeedbackForm = () => {
         }
     })
 
-    const phoneValidate = (value) => {
+    const phoneValidate = (value: string) => {
         if(value.includes('_')) {
             return false
         } else {
@@ -23,8 +29,8 @@ const FeedbackForm = () => {
         }
     }
 
-    const onSubmit = (data) => {
-        console.log(data)
+    const onSubmit: SubmitHandler<IFeedbackForm> = (data) => {
+        // console.log(data)
     }
 
     return (

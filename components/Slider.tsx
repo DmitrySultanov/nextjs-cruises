@@ -9,16 +9,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import classNames from 'classnames';
+import { ISliderPhoto } from '../types';
 
-
-interface ISliderPhoto {
-    id?: number
-    description?: string
-    filename: string
-    filesize?: number
-    filetype?: string
-    position?: number
-}
 
 interface ISliderProps {
     photos: ISliderPhoto[] | string[]

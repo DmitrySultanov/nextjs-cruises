@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 type BreadcrumbsProps = {
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({children}) => {
+const Breadcrumbs: FC<BreadcrumbsProps> = ({children}) => {
     const router = useRouter()
 
     return (

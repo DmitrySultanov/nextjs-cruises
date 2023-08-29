@@ -6,7 +6,7 @@ import { IType } from '../../types';
 
 interface ITypesProps {
     types: IType[]
-    idx: number
+    idx?: number
 }
 
 const CabinTypes: FC<ITypesProps> = ({types}) => {

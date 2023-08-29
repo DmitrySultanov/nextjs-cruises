@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 type layoutProps = {
     children: ReactNode,
-    pageClass: string
+    pageClass?: string
 }
 
 

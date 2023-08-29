@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC, ChangeEvent} from 'react';
 import Head from 'next/head';
 import { Grid, Box, Container, Typography, Button, Alert, 
     Pagination, Card, CardContent, Skeleton } from '@mui/material';
@@ -13,50 +13,85 @@ import moment from 'moment';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDisplay, faRubleSign } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/Cruises.module.scss';
+import { ICruise } from '../../types';
 
 
-export const getServerSideProps = async (context) => {
-    try {
-        if(!context.query.city) {
-            return {
-                redirect: {
-                  destination: '/',
-                  permanent: false,
-                },
-            }
-        }
-
-        const response = await APIService.getCruises(context.query)
-        const data = await response.data;
-
-        if (!data) {
-            return {
-              notFound: true,
-            }
-        }
-    
+export const getServerSideProps = async (context: any) => {
+    if(!context.query.city) {
         return {
-            props: {
-                cruises: data,
-                statusCode: 200,
-                statusText: null
-            }
+            redirect: {
+                destination: '/',
+                permanent: false,
+            },
         }
-    } catch(error) {
+    }
+
+    const response: any = await APIService.getCruises(context.query)
+    const data = await response.data;
+
+    if (!data) {
         return {
             props: {
                 cruises: null,
-                statusCode: error.response.status,
-                statusText: error.response.statusText
+                statusCode: response.status ? response.status : null,
+                statusText: response.message
             }
+        }
+    }
+
+    return {
+        props: {
+            cruises: data,
+            statusCode: 200,
+            statusText: null
         }
     }
 }
 
-const RiverCruises = ({cruises, statusCode, statusText}) => {
+interface ICruisesProps {
+    cruises: {
+        data: ICruise[]
+        excursions?: string
+        filters: {
+            dateStartFrom: string
+            key: string
+            lengthMax: string
+            lengthMin: string
+            limit: number
+            startCity: string
+        }
+        pagination: {
+            pages: {
+                current: {
+                    number: number
+                    url: string
+                }
+                next?: {
+                    number: number
+                    url: string
+                }
+                previous?: {
+                    number: number
+                    url: string
+                }
+                total: number
+            }
+            records: {
+                onCurrentPage: number
+                perPage: number
+                total: number
+            }
+        }
+    }
+    statusCode: number | null
+    statusText: string | null
+}
+
+
+const RiverCruises: FC<ICruisesProps> = ({cruises, statusCode, statusText}) => {
     const router = useRouter()
 
-    const handlePaginationChange = (event, value) => {
+    const handlePaginationChange = (event: ChangeEvent<unknown>, page: number) => {
         router.push({
             pathname: '/cruises',
             query: { 
@@ -64,7 +99,7 @@ const RiverCruises = ({cruises, statusCode, statusText}) => {
                 date: router.query.date, 
                 duration: router.query.duration,
                 limit: 32,
-                page: value
+                page: page
             }
         })
     }

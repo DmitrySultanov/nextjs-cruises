@@ -192,7 +192,7 @@ export default function Cruise({cruise, statusCode, statusText}) {
                   </Grid>
 
                   <Grid item xs={12}>
-                    <ShipInfo ship={cruise.ship.id} />
+                    <ShipInfo shipId={cruise.ship.id} />
                     
                     <Box sx={{textAlign: 'center', my: 4}}>
                       <Button sx={{ mt: 2 }} variant="contained" color="primary" size="large" onClick={handleOpenBookingModal}>Забронировать каюту</Button>

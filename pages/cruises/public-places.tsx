@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Typography, Container, Box, Card, CardContent, Skeleton, Grid, Alert } from '@mui/material/';
 import APIService from '../../api/APIService';
 import Layout from '../../components/Layout';
@@ -8,8 +8,8 @@ import styles from '../../styles/PublicPlaces.module.scss';
 
 
 export const getStaticProps = async () => {
-    const response = await APIService.getPublicPlaces()
-    const data = await response.data
+    const response: any = await APIService.getPublicPlaces()
+    const data = await response.data.data
 
     return {
         props: {
@@ -20,7 +20,20 @@ export const getStaticProps = async () => {
     }
 }
 
-const PublicPlaces = ({places, statusCode, statusText}) => {
+interface IPublicPlace {
+    id: number
+    name: string
+    description: string
+    photo?: string
+}
+
+interface IPublicPlacesProps {
+    places: IPublicPlace[]
+    statusCode: number | null
+    statusText: string | null
+}
+
+const PublicPlaces: FC<IPublicPlacesProps> = ({places, statusCode, statusText}) => {
     console.log(places, statusCode, statusText)
 
     return (
@@ -30,7 +43,7 @@ const PublicPlaces = ({places, statusCode, statusText}) => {
                 {statusCode === 200
                     ?   <Box className={styles.publicPlaces}>
                             <Grid container spacing={2}>
-                                {places.data?.map((place) => 
+                                {places.map((place) => 
                                 <>
                                     <Grid item lg={3} key={place.id}>
                                         <Card className={styles.card}>
