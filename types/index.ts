@@ -72,6 +72,45 @@ export interface ICabins {
     total: number
 }
 
+export interface ICruisesProps {
+    cruises: {
+        data: ICruise[]
+        excursions?: string
+        filters: {
+            dateStartFrom: string
+            key: string
+            lengthMax: string
+            lengthMin: string
+            limit: number
+            startCity: string
+        }
+        pagination: {
+            pages: {
+                current: {
+                    number: number
+                    url: string
+                }
+                next?: {
+                    number: number
+                    url: string
+                }
+                previous?: {
+                    number: number
+                    url: string
+                }
+                total: number
+            }
+            records: {
+                onCurrentPage: number
+                perPage: number
+                total: number
+            }
+        }
+    }
+    statusCode: number | null
+    statusText: string | null
+}
+
 interface ICruiseShipDeck extends IIDName {
     position: number
 }
@@ -95,6 +134,11 @@ interface ICruiseShipSug {
 export interface ICruise {
     additional: string
     beautifulName?: string
+    cabinCapacity: {
+        busy: number | string
+        free: number | string
+        total: number | string
+    }
     childAge: string
     cruise_flags?: string
     cruise_time_avaliable: number
@@ -140,10 +184,14 @@ export interface ICruise {
     }
     rate: number
     regions: IIDName
-    rivers: IIDName | IIDName[]
+    rivers: {
+        id: number
+        name: string
+        [key: string]: any
+    }
     route: string
     routeBottomText?: string
-    routeShort: string
+    routeShort?: string
     russian_squad?: string
     russian_squad_title?: []
     ship: {
@@ -171,4 +219,12 @@ export interface ICruise {
     type: IIDName
     weekend?: string
     without_visa?: string
+}
+
+export interface INews {
+    dateNews: number
+    id: number
+    image: string
+    name: string
+    text: string
 }

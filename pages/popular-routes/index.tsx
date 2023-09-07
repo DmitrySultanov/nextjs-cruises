@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import { Grid, Box, Container, Typography, Button, Alert, 
     Card, CardContent, Skeleton, Pagination } from '@mui/material';
 import Head from 'next/head';
@@ -13,10 +13,11 @@ import APIService from '../../api/APIService';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRubleSign } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/Cruises.module.scss';
+import { ICruisesProps } from '../../types';
 
 
-export const getServerSideProps = async (context) => {
-    const response = await APIService.getPopularRouteById(context.query)
+export const getServerSideProps = async (context: any) => {
+    const response: any = await APIService.getPopularRouteById(context.query)
     const data = await response.data;
 
     if (!data) {
@@ -35,18 +36,18 @@ export const getServerSideProps = async (context) => {
 }
 
 
-const PopularRoutes = ({cruises, statusCode, statusText}) => {
+const PopularRoutes: FC<ICruisesProps> = ({cruises, statusCode, statusText}) => {
     const router = useRouter()
 
-    const handlePaginationChange = (event, value) => {
-        console.log(event, value, router)
+    const handlePaginationChange = (event: ChangeEvent<unknown>, page: number) => {
+        // console.log(event, value, router)
         router.push({
             pathname: '/popular-routes',
             query: { 
                 date: router.query.date,
                 popularRouteId: router.query.popularRouteId,
                 limit: 32,
-                page: value,
+                page: page,
             }
         })
     }

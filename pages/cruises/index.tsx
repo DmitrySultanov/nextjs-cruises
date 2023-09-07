@@ -13,7 +13,7 @@ import moment from 'moment';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDisplay, faRubleSign } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/Cruises.module.scss';
-import { ICruise } from '../../types';
+import { ICruisesProps } from '../../types';
 
 
 export const getServerSideProps = async (context: any) => {
@@ -48,45 +48,6 @@ export const getServerSideProps = async (context: any) => {
     }
 }
 
-interface ICruisesProps {
-    cruises: {
-        data: ICruise[]
-        excursions?: string
-        filters: {
-            dateStartFrom: string
-            key: string
-            lengthMax: string
-            lengthMin: string
-            limit: number
-            startCity: string
-        }
-        pagination: {
-            pages: {
-                current: {
-                    number: number
-                    url: string
-                }
-                next?: {
-                    number: number
-                    url: string
-                }
-                previous?: {
-                    number: number
-                    url: string
-                }
-                total: number
-            }
-            records: {
-                onCurrentPage: number
-                perPage: number
-                total: number
-            }
-        }
-    }
-    statusCode: number | null
-    statusText: string | null
-}
-
 
 const RiverCruises: FC<ICruisesProps> = ({cruises, statusCode, statusText}) => {
     const router = useRouter()
@@ -107,7 +68,7 @@ const RiverCruises: FC<ICruisesProps> = ({cruises, statusCode, statusText}) => {
     return (
         <Layout pageClass="cruises">
             <Head>
-                <title>Главная - КруизеШтерн</title>
+                <title>КруизеШтерн - Главная</title>
             </Head>
             <Container maxWidth="lg">
                 <Breadcrumbs />

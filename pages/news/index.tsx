@@ -1,33 +1,44 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Grid, Box, Container, Typography, Card, CardContent } from '@mui/material';
 import styles from '../../styles/News.module.scss';
 import Image from 'next/image';
+import Head from 'next/head';
 import Link from 'next/link';
 import APIService from '../../api/APIService';
 import Layout from '../../components/Layout';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import Dotdotdot from 'react-dotdotdot';
+import { INews } from '../../types';
 
 
 export const getStaticProps = async () => {
-    const response = await APIService.getAllNews(20)
-    const data = await response.data
+    const response: any = await APIService.getAllNews(20)
+    const data = await response.data.allNews
 
     return {
         props: {allNews: data}
     }
 }
 
-const News = (allNews) => {
-    console.log(allNews)
+interface IAllNewsProps {
+    allNews: {
+        count: number
+        data: INews[]
+    }
+}
+
+const News: FC<IAllNewsProps> = ({allNews}) => {
     return (
         <Layout>
+            <Head>
+                <title>КруизеШтерн - Все новости</title>
+            </Head>
             <Box className={styles.newsList}>
                 <Container maxWidth="lg">
                     <Breadcrumbs />
                     <Typography variant="h4" component="h1">Все новости</Typography>
                     <Grid container spacing={2}>
-                        {allNews.allNews.data?.map((news, idx) => 
+                        {allNews.data?.map((news, idx) => 
                             <Grid item lg={3} key={idx}>
                                 <Card className={styles.card}>
                                     <Box className={styles.cardMedia}>

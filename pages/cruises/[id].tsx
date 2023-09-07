@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
+// @ts-ignore
 import { Grid, Box, Container, Badge, Typography, Button, Table, TableBody, TableCell, TableRow, Alert } from '@mui/material';
 import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Layout from '../../components/Layout';
@@ -11,48 +11,57 @@ import Breadcrumbs from '../../components/Breadcrumbs';
 import ShipInfo from '../../components/Cruise/ShipInfo';
 import CruisePorts from '../../components/Cruise/CruisePorts';
 import APIService from '../../api/APIService';
+// @ts-ignore
 import ProgressBar from "@ramonak/react-progress-bar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRubleSign, faShip, faWater, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import styles from '../../styles/Cruises.module.scss';
 import BookingCabinsModal from '../../components/Cruise/BookingCabinsModal';
+import { ICruise } from '../../types';
 
 
-export const getServerSideProps = async ({ params, res }) => {
-  try {
-    const response = await APIService.getCruise(params.id)
-    const data = await response.data;
+export const getServerSideProps = async ( context:any ) => {
+  const response:any = await APIService.getCruise(context.query.id)
+  const data = await response.data;
 
-    if (!data) {
-      return {
-        notFound: true
-      }
-    }
-
+  if (!data) {
     return {
-      props: { 
-        cruise: data,
-        statusCode: 200,
-        statusText: null
-      }
-    }
-  } catch(error) {
-    return {
+      notFound: true,
       props: {
         cruise: null,
-        statusCode: error.response.status,
-        statusText: error.response.statusText
+        statusCode: response.status ? response.status : null,
+        statusText: response.message
       }
+    }
+  }
+
+  return {
+    props: { 
+      cruise: data,
+      statusCode: 200,
+      statusText: null
     }
   }
 }
 
-export default function Cruise({cruise, statusCode, statusText}) {
+interface ICruisesProps {
+  cruise: ICruise
+  statusCode: number | null
+  statusText: string | null
+}
+
+const Cruise: FC<ICruisesProps> = ({cruise, statusCode, statusText}) => {
   moment.locale('ru')
   const [openBookingModal, setOpenBookingModal] = useState(false)
   const handleOpenBookingModal = () => {
     setOpenBookingModal(true)
   } 
+  let preapredRiversArray: string[] = []
+
+  Object.keys(cruise.rivers).forEach(function(key) {
+    preapredRiversArray.push(cruise.rivers[key].name)
+  })
+
 
   return (
     <Layout>
@@ -92,8 +101,8 @@ export default function Cruise({cruise, statusCode, statusText}) {
                           </TableCell>
                           <TableCell>
                             <ProgressBar 
-                                completed={cruise.cabinCapacity.busy} 
-                                maxCompleted={cruise.cabinCapacity.total}
+                                completed={Number(cruise.cabinCapacity.busy)} 
+                                maxCompleted={Number(cruise.cabinCapacity.total)}
                                 className={styles.progressBar}
                                 bgColor="#f50057"
                                 height="16px"
@@ -110,8 +119,8 @@ export default function Cruise({cruise, statusCode, statusText}) {
                           </TableCell>
                           <TableCell>
                             <ProgressBar 
-                                completed={cruise.cabinCapacity.free} 
-                                maxCompleted={cruise.cabinCapacity.total}
+                                completed={Number(cruise.cabinCapacity.free)} 
+                                maxCompleted={Number(cruise.cabinCapacity.total)}
                                 className={styles.progressBar}
                                 bgColor="rgb(76, 175, 80)"
                                 height="16px"
@@ -127,20 +136,20 @@ export default function Cruise({cruise, statusCode, statusText}) {
                     <Table aria-label="simple table" size="small">
                       <TableBody>
                         <TableRow sx={{ '& > td': { border: 0 } }}>
-                          <TableCell colSpan="2" sx={{width: '50%', pl: 0}}>
+                          <TableCell sx={{width: '50%', pl: 0, colspan: 2}}>
                           <Typography variant="body1">
                               <FontAwesomeIcon icon={faShip} /> {cruise.ship?.name}
                           </Typography>
                           </TableCell>
                         </TableRow>
                         <TableRow sx={{ '& > td': { border: 0 } }}>
-                          <TableCell colSpan="2" sx={{pl: 0}}>
-                          <FontAwesomeIcon icon={faWater} />&nbsp;
-                          {cruise.rivers?.map((river, idx) =>
-                              <Typography key={idx} variant="body2" component="span" style={{marginRight: '.25rem'}}>
-                              {river.name},
-                              </Typography>
-                          )}
+                          <TableCell sx={{pl: 0, colspan: 2}}>
+                            <FontAwesomeIcon icon={faWater} />&nbsp;
+                            {Object.values(preapredRiversArray).map((item, idx) => 
+                                <Typography key={idx} variant="body2" component="span" style={{marginRight: '.25rem'}}>
+                                  {item},
+                                </Typography>
+                            )}
                           </TableCell>
                         </TableRow>
                         <TableRow sx={{ '& > td': { border: 0 } }}>
@@ -222,6 +231,8 @@ export default function Cruise({cruise, statusCode, statusText}) {
     </Layout>
   )
 }
+
+export default Cruise;
 
 // export async function getStaticProps(context) {
 //   const response = await APIService.getCruise(context.params.id)

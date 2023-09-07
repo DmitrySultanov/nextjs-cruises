@@ -4,6 +4,7 @@ import APIService from '../../api/APIService';
 import Layout from '../../components/Layout';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import Image from 'next/image';
+import Head from 'next/head';
 import styles from '../../styles/PublicPlaces.module.scss';
 
 
@@ -38,6 +39,9 @@ const PublicPlaces: FC<IPublicPlacesProps> = ({places, statusCode, statusText}) 
 
     return (
         <Layout>
+            <Head>
+                <title>КруизеШтерн - Общественные места</title>
+            </Head>
             <Container maxWidth="lg">
                 <Breadcrumbs />
                 {statusCode === 200
