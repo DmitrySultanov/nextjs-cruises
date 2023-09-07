@@ -13,7 +13,7 @@ import { INews } from '../../types';
 
 export const getStaticProps = async () => {
     const response: any = await APIService.getAllNews(20)
-    const data = await response.data.allNews
+    const data = await response.data
 
     return {
         props: {allNews: data}
